@@ -9,7 +9,7 @@
 		<title>Brace Forecast</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" type="text/css" href="../static/css/style.css" />
 	</head>
 	<body>
 
@@ -18,10 +18,10 @@
 				<div class="inner">
 					<a href="index.html" class="logo"><strong>Brace</strong>Forecast</a>
 					<!-- <img class = "logo" src="./images/Logo.gif"/> -->
-					<nav id="nav">
+					<!-- <nav id="nav">
 						<a href="index.html">Home</a>
-					</nav>
-					<a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+					</nav> -->
+					<!-- <a href="#navPanel" class="navPanelToggle"><span class="fa fa-bars"></span></a> -->
 				</div>
 			</header>
 
@@ -32,7 +32,9 @@
 						<h1 style="color: white; font-size: 5em;">Do you need braces?</h1>
 					</header>
 
-					<div class="flex ">
+					
+
+					<!-- <div class="flex ">
 
 						<div>
 							<span class="icon fa-car"></span>
@@ -55,9 +57,9 @@
 					</div>
 
 					<footer>
-						<a href="#footer" class="button">Get Started</a>
+						<a href="#footer" class="button">Learn More</a>
 					</footer>
-				</div>
+				</div> -->
 			</section>
 
 
@@ -67,27 +69,27 @@
 					<div class="flex flex-2">
 						<article>
 							<div class="image round">
-								<img src="images/pic01.jpg" alt="Pic 01" />
+								<img src="static/images/pic01.jpg" alt="Pic 01" />
 							</div>
 							<header>
 								<h3>Lorem ipsum<br /> dolor amet nullam</h3>
 							</header>
 							<p>Morbi in sem quis dui placerat ornare. Pellentesquenisi<br />euismod in, pharetra a, ultricies in diam sed arcu. Cras<br />consequat  egestas augue vulputate.</p>
-							<footer>
+							<!-- <footer>
 								<a href="#" class="button">Learn More</a>
-							</footer>
+							</footer> -->
 						</article>
 						<article>
 							<div class="image round">
-								<img src="images/pic02.jpg" alt="Pic 02" />
+								<img src="static/images/pic02.jpg" alt="Pic 02" />
 							</div>
 							<header>
 								<h3>Sed feugiat<br /> tempus adipicsing</h3>
 							</header>
 							<p>Pellentesque fermentum dolor. Aliquam quam lectus<br />facilisis auctor, ultrices ut, elementum vulputate, nunc<br /> blandit ellenste egestagus commodo.</p>
-							<footer>
+							<!-- <footer>
 								<a href="#" class="button">Learn More</a>
-							</footer>
+							</footer> -->
 						</article>
 					</div>
 				</div>
@@ -99,7 +101,7 @@
 
 					<h3>Brace Yourself</h3>
 
-					<form action="generic.html" method="post">
+					<form action="/send" method="POST" role="form">
 
 						<div class="field">
 							<label for="message">Name</label>
@@ -107,15 +109,27 @@
 						</div>
 						<div class="field">
 							<label for="message">Email</label>
-							<textarea name="message" id="message" rows="1" placeholder="Email"></textarea>
+							<textarea name="email" id="email" rows="1" placeholder="Email"></textarea>
 						</div>
 						<div class="field">
 							<label for="message">Address</label>
-							<textarea name="message" id="message" rows="1" placeholder="Address"></textarea>
+							<textarea name="address" id="address" rows="1" placeholder="Address"></textarea>
 						</div>
-						<ul class="actions">
-							<li><input value="Get Started" class="button alt" type="submit"></li>
-						</ul>
+
+						<div class="text-center"><button type="submit">Save Information</button></div>
+
+						<form action="/upload-image" method="POST" enctype="multipart/form-data">
+							<input type="file" accept="image/*" id="file-input" name="file_image" id="file_image">
+				
+							<script>
+							  const fileInput = document.getElementById('file-input');
+				
+							  fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
+							</script>
+				
+							<div class="text-center"><button type="submit">Upload Image</button></div>
+				
+						</form>
 					</form>
 
 					<div class="copyright">
