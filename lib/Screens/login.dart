@@ -1,4 +1,4 @@
-import 'package:defhacks/Screens/Landing/body.dart';
+import 'package:defhacks/Screens/dashboard.dart';
 import 'package:defhacks/Screens/register.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -64,12 +64,14 @@ class LoginScreen extends State<login> {
     //assert(await user.getIdToken() != null);
 
     print("Signed in user");
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Body()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => HomeScreen()));
     return user;
   }
 
   Future<FirebaseUser> _handleSigninWithGoogle(
       GoogleSignIn googleSignIn) async {
+    print("hi");
     final GoogleSignInAccount googleUser = await googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth =
         await googleUser.authentication;
@@ -80,7 +82,9 @@ class LoginScreen extends State<login> {
 
     final FirebaseUser user =
         (await _auth.signInWithCredential(credential)).user;
-    print("signed in " + user.displayName);
+    print("signed in ");
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => HomeScreen()));
     return user;
   }
 
