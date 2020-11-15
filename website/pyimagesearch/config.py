@@ -21,7 +21,7 @@ BATCH_SIZE = 2
 NUM_EPOCHS = 100
 
 # set the path to the serialized model after training
-MODEL_PATH = os.path.sep.join(["output", "fire_detection.keras"])
+MODEL_PATH = os.path.sep.join(["output", "detection.keras"])
 
 # define the path to the output learning rate finder plot and
 # training history plot

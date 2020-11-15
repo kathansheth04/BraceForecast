@@ -74,7 +74,7 @@ def upload_image():
             # return redirect(request.url)
     
     print("[INFO] loading model...")
-    model = load_model(os.path.sep.join(["output", "fire_detection.keras"]))
+    model = load_model(os.path.sep.join(["output", "detection.keras"]))
 
     print("[INFO] predicting...")
     bracePaths = list(paths.list_images("yesBrace"))
