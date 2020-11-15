@@ -21,6 +21,7 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  url_launcher: ^5.7.10
   http: ^0.12.1
   loading: ^1.0.2
   firebase_database: ^3.1.6
@@ -61,6 +62,7 @@ flutter:
     - lib/Screens/assets/main_top.png
     - lib/Screens/assets/main_bottom.png
     - lib/Screens/assets/main_topright.png
+    - lib/Screens/assets/dentalcares.JSON
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
