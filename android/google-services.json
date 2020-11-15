@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "81907283493",
+    "firebase_url": "https://defhacks-303f0.firebaseio.com",
+    "project_id": "defhacks-303f0",
+    "storage_bucket": "defhacks-303f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81907283493:android:081d1fe825f547aafa71cc",
+        "android_client_info": {
+          "package_name": "com.example.defhacks"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81907283493-58afqh2s32hpj53egrvj53mq3i7f3f17.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtUfMf-UY_Eu_KHGobd0aPclEJC5tOA78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81907283493-58afqh2s32hpj53egrvj53mq3i7f3f17.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
