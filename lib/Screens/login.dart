@@ -65,7 +65,7 @@ class LoginScreen extends State<login> {
 
     print("Signed in user");
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        context, MaterialPageRoute(builder: (context) => Dashboard()));
     return user;
   }
 
@@ -84,7 +84,7 @@ class LoginScreen extends State<login> {
         (await _auth.signInWithCredential(credential)).user;
     print("signed in ");
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        context, MaterialPageRoute(builder: (context) => Dashboard()));
     return user;
   }
 
