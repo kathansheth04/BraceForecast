@@ -1,6 +1,8 @@
 import 'package:defhacks/Screens/Landing/body.dart';
 import 'package:defhacks/Screens/register.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 void main() {
   runApp(loginScreen());
@@ -40,7 +42,48 @@ class login extends StatefulWidget {
   LoginScreen createState() => LoginScreen();
 }
 
+final FirebaseAuth _auth = FirebaseAuth.instance;
+
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+final GoogleSignIn googleSignIn = GoogleSignIn();
+
 class LoginScreen extends State<login> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  Future<FirebaseUser> _handleSigninWithEmail(
+      String email, String password) async {
+    print(email);
+    print(password);
+    AuthResult authResult = await _auth.signInWithEmailAndPassword(
+        email: email.trim(), password: password.trim());
+    final FirebaseUser user = authResult.user;
+
+    //assert(user != null);
+    //assert(await user.getIdToken() != null);
+
+    print("Signed in user");
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Body()));
+    return user;
+  }
+
+  Future<FirebaseUser> _handleSigninWithGoogle(
+      GoogleSignIn googleSignIn) async {
+    final GoogleSignInAccount googleUser = await googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    final FirebaseUser user =
+        (await _auth.signInWithCredential(credential)).user;
+    print("signed in " + user.displayName);
+    return user;
+  }
+
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -62,6 +105,7 @@ class LoginScreen extends State<login> {
               padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
               width: 150.0,
               child: TextFormField(
+                controller: _emailController,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(width: 1, color: Colors.blue),
@@ -83,6 +127,7 @@ class LoginScreen extends State<login> {
             new Container(
               padding: EdgeInsets.all(10.0),
               child: TextFormField(
+                controller: _passwordController,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(width: 1, color: Colors.blue),
@@ -110,7 +155,10 @@ class LoginScreen extends State<login> {
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.all(10.0),
               child: RaisedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    _handleSigninWithEmail(
+                        _emailController.text.trim(), _passwordController.text);
+                  },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30.0))),
                   label: Text('Sign In',
@@ -124,7 +172,9 @@ class LoginScreen extends State<login> {
               margin: EdgeInsets.only(top: 5, bottom: 10),
               padding: EdgeInsets.all(10.0),
               child: RaisedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    _handleSigninWithGoogle(googleSignIn);
+                  },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30.0))),
                   label: Text('Sign in with Google',

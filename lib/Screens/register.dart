@@ -1,6 +1,8 @@
-import 'package:defhacks/Screens/Landing/body.dart';
 import 'package:defhacks/Screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 void main() {
   runApp(registerscreen());
@@ -40,7 +42,32 @@ class register extends StatefulWidget {
   RegisterScreen createState() => RegisterScreen();
 }
 
+final FirebaseAuth _auth = FirebaseAuth.instance;
+TextEditingController _emailController = TextEditingController();
+TextEditingController _passwordController = TextEditingController();
+TextEditingController addressController = TextEditingController();
+
 class RegisterScreen extends State<register> {
+  Future<FirebaseUser> _handleSignUp(String email, String password) async {
+    final FirebaseUser user = (await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    ))
+        .user;
+    print('Signed user up: ');
+    uploadData();
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => loginScreen()));
+  }
+
+  void uploadData() async {
+    final FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    FirebaseDatabase.instance
+        .reference()
+        .child(user.uid)
+        .set({'state': addressController.text});
+  }
+
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -62,6 +89,7 @@ class RegisterScreen extends State<register> {
               padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
               width: 150.0,
               child: TextFormField(
+                controller: _emailController,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(width: 1, color: Colors.blue),
@@ -109,6 +137,7 @@ class RegisterScreen extends State<register> {
             new Container(
               padding: EdgeInsets.all(10.0),
               child: TextFormField(
+                controller: _passwordController,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(width: 1, color: Colors.blue),
@@ -135,6 +164,7 @@ class RegisterScreen extends State<register> {
             new Container(
               padding: EdgeInsets.all(10.0),
               child: TextFormField(
+                controller: addressController,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(width: 1, color: Colors.blue),
@@ -144,7 +174,7 @@ class RegisterScreen extends State<register> {
                         const BorderSide(color: Colors.blue, width: 2.0),
                   ),
                   hintText: 'Address',
-                  prefixIcon: Icon(Icons.security),
+                  prefixIcon: Icon(Icons.home_outlined),
                   labelText: 'Enter Address',
                   contentPadding: new EdgeInsets.fromLTRB(
                     20.0,
@@ -153,7 +183,7 @@ class RegisterScreen extends State<register> {
                     10.0,
                   ),
                 ),
-                obscureText: true,
+                obscureText: false,
                 validator: (input) =>
                     input.isEmpty ? 'You must enter a password' : null,
               ),
@@ -162,7 +192,10 @@ class RegisterScreen extends State<register> {
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.all(10.0),
               child: RaisedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    this._handleSignUp(_emailController.text.trim(),
+                        _passwordController.text.trim());
+                  },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30.0))),
                   label: Text('Create Account',
