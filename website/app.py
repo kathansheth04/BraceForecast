@@ -18,7 +18,7 @@ from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
-app.config["IMAGE_UPLOADS"] = "/Users/samarth/Desktop/defhacks/website"
+app.config["IMAGE_UPLOADS"] = "/Users/samarth/Desktop/defhacks/website/sampdata"
 
 name_array = []
 email_array = []
@@ -81,9 +81,9 @@ def upload_image():
     nonBracePaths = list(paths.list_images("noBrace"))
 
 
-    # combine the two image path lists, randomly shuffle them, and sample
+    # combine the two image path lists, randomly shuffle them, and sample  
     # them
-    imagePaths = list(paths.list_images("/Users/samarth/Desktop/defhacks/machineLearning/sampdata"))
+    imagePaths = list(paths.list_images("/Users/samarth/Desktop/defhacks/website/sampdata"))
     random.shuffle(imagePaths)
     imagePaths = imagePaths[:50]
 
@@ -120,7 +120,7 @@ def upload_image():
 
         # write the output image to disk	 
         filename = "{}.png".format(i)
-        p = os.path.sep.join([os.path.sep.join(["output", "examples"]), filename])
+        p = os.path.sep.join([os.path.sep.join(["static", "result_img"]), filename])
         cv2.imwrite(p, output)
     
     return render_template("index.html")
