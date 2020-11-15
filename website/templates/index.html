@@ -102,11 +102,13 @@
 						<div class="text-center"><button type="submit">Save Information</button></div>
 					</form>
 
-					<h1 style="color: #296d98;"><strong>Uploading Instructions</strong></h1>
+					<h1 style="color: #296d98; font-size: 1.5em;"><strong>Uploading Instructions:</strong></h1>
 					<p>Please upload a picture of your teeth while making sure that both your front and bottom teeth can be seen.</p>
+					<p style="font-size: 1em;">As more images are put through the machine learning model, the better the accuracy of predicting whether braces are needed will be.</p>
 
-					<form action="/upload-image" method="POST" enctype="multipart/form-data">
-						<input type="file" accept="image/*" id="file-input" name="file_image" id="file_image" class = "text-center">
+					<form action="/upload-image" method="POST" enctype="multipart/form-data">						
+						<input type="file" accept="image/*" name="file" id="file" class="inputfile" />
+						<label for="file">Choose a file</label>
 				
 						<script>
 							const fileInput = document.getElementById('file-input');
