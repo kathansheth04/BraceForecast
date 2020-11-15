@@ -46,8 +46,7 @@ def send():
         email = req.get("email")
         email_array.append(email)
         email_array[0] = email
-# comment
-
+        
         address = req.get("address")
         address_array.append(address)
         address_array[0] = address
