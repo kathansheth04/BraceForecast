@@ -1,3 +1,5 @@
+import 'package:defhacks/Screens/login.dart';
+import 'package:defhacks/Screens/register.dart';
 import 'package:flutter/material.dart';
 import 'package:defhacks/Screens/Landing/background.dart';
 
@@ -18,7 +20,8 @@ class Body extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
               width: size.width * 0.85,
               child: RaisedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {Navigator.push(
+                    context,MaterialPageRoute(builder: (context) => loginScreen()));},
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30.0))),
                   label: Text('Log in',
@@ -33,7 +36,8 @@ class Body extends StatelessWidget {
               padding: EdgeInsets.all(10.0),
               width: size.width * 0.85,
               child: RaisedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {Navigator.push(
+                    context,MaterialPageRoute(builder: (context) => registerscreen()));},
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30.0))),
                   label: Text('Register',
