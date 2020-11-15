@@ -46,7 +46,7 @@ def send():
         email = req.get("email")
         email_array.append(email)
         email_array[0] = email
-
+# comment
 
         address = req.get("address")
         address_array.append(address)
@@ -71,7 +71,7 @@ def upload_image():
 
             print(image)
 
-            # return redirect(request.url)
+            return redirect(request.url)
     
     print("[INFO] loading model...")
     model = load_model(os.path.sep.join(["output", "detection.keras"]))
