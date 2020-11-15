@@ -61,11 +61,11 @@ def upload_image():
 
         if label == "Non-Brace":
             text = "Non-Brace"
-            return "0";
+            return "1";
 
         else:
             text = "Brace"
-            return "1";
+            return "0";
 
                 
 

@@ -83,6 +83,8 @@ class _HomePageState extends State<uploadScreen> {
     });
   }
 
+  void checkReport() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,7 +129,7 @@ class _HomePageState extends State<uploadScreen> {
                 textAlign: TextAlign.center,
                 text: TextSpan(
                   text: 'Do you need braces? Let\'s take a look!',
-                  style: TextStyle(color: Colors.black, fontSize: 17),
+                  style: TextStyle(color: Colors.black, fontSize: 27),
                 ),
               ),
             ),
@@ -154,28 +156,30 @@ class _HomePageState extends State<uploadScreen> {
                   new Container(
                     padding: EdgeInsets.fromLTRB(20, 0, 20, 30),
                     child: Text(
-                        "Uploading Info: \n 1) Please take a picture of your teeh from the front including your bottom and top teeth using your camera \n 2) Click on the button labeled upload image",
+                        "1) Please take a picture of your teeth from the front including your bottom and top teeth using your camera \n 2) Click on the button below.",
                         style: TextStyle(
                             color: Colors.black, fontSize: 15, height: 1.3)),
-                  )
+                  ),
+                  new Container(
+                    margin: EdgeInsets.only(top: 5),
+                    width: 400,
+                    padding: EdgeInsets.all(10.0),
+                    child: RaisedButton.icon(
+                        onPressed: () {
+                          _showOptions(context);
+                        },
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0))),
+                        label: Text('Upload Image',
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 17)),
+                        icon: Icon(Icons.camera, color: Colors.black),
+                        padding: const EdgeInsets.all(13.0),
+                        splashColor: Colors.lightBlue[200],
+                        color: Colors.lightBlue[100]),
+                  ),
                 ])),
-            new Container(
-              margin: EdgeInsets.only(top: 5),
-              width: 400,
-              padding: EdgeInsets.all(10.0),
-              child: RaisedButton.icon(
-                  onPressed: () {
-                    _showOptions(context);
-                  },
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(30.0))),
-                  label: Text('Upload Image',
-                      style: TextStyle(color: Colors.black, fontSize: 17)),
-                  icon: Icon(Icons.camera, color: Colors.black),
-                  padding: const EdgeInsets.all(13.0),
-                  splashColor: Colors.lightBlue[200],
-                  color: Colors.lightBlue[100]),
-            ),
             Card(
                 margin:
                     EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 10),
@@ -199,15 +203,32 @@ class _HomePageState extends State<uploadScreen> {
                   new Container(
                       padding: EdgeInsets.fromLTRB(20, 0, 20, 30),
                       child: Text(
-                          "Brushing: \n 1) Practice good technique \n 2) Brush your teeth for two minutes \n 3) Try to keep it separate from other toothbrushes in the same holder to prevent cross-contamination \n 4) Invest in a new toothbrush every three months",
+                          "Brushing: \n 1) Brush your teeth for two minutes \n 2) Try to keep your brush separate from other toothbrushes in the same holder to prevent cross-contamination \n 3) Invest in a new toothbrush every three months",
                           style: TextStyle(
                               color: Colors.black, fontSize: 15, height: 1.3))),
                   new Container(
                       padding: EdgeInsets.fromLTRB(20, 0, 20, 30),
                       child: Text(
-                          "Flossing: \n 1) Don't rush \n 2) BrushDon't snap the floss into your gums. When the floss reaches your gum line, curve it against one tooth, making a c shape. \n 3) Use the floss to gently rub the side of the tooth in an up-and-down motion \n 4)  If you find it hard to handle the floss, try using a water flosser.",
+                          "Flossing: \n 1) Don't snap the floss into your gums. When the floss reaches your gum line, curve it against one tooth, making a c shape. \n 2) Use the floss to gently rub the side of the tooth in an up-and-down motion \n 3)  If you find it hard to handle the floss, try using a water flosser.",
                           style: TextStyle(
-                              color: Colors.black, fontSize: 15, height: 1.3)))
+                              color: Colors.black, fontSize: 15, height: 1.3))),
+                  new Container(
+                    margin: EdgeInsets.only(top: 5),
+                    width: 400,
+                    padding: EdgeInsets.all(10.0),
+                    child: RaisedButton.icon(
+                        onPressed: () {},
+                        shape: RoundedRectangleBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(30.0))),
+                        label: Text('See Report',
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 17)),
+                        icon: Icon(Icons.file_copy, color: Colors.black),
+                        padding: const EdgeInsets.all(13.0),
+                        splashColor: Colors.lightBlue[200],
+                        color: Colors.lightBlue[100]),
+                  ),
                 ])),
           ]),
         ));
