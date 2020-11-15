@@ -1,6 +1,8 @@
-import 'package:defhacks/Screens/Landing/body.dart';
 import 'package:defhacks/Screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 void main() {
   runApp(registerscreen());
@@ -40,7 +42,32 @@ class register extends StatefulWidget {
   RegisterScreen createState() => RegisterScreen();
 }
 
+final FirebaseAuth _auth = FirebaseAuth.instance;
+TextEditingController _emailController = TextEditingController();
+TextEditingController _passwordController = TextEditingController();
+TextEditingController addressController = TextEditingController();
+
 class RegisterScreen extends State<register> {
+  Future<FirebaseUser> _handleSignUp(String email, String password) async {
+    final FirebaseUser user = (await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    ))
+        .user;
+    print('Signed user up: ');
+    uploadData();
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => loginScreen()));
+  }
+
+  void uploadData() async {
+    final FirebaseUser user = await FirebaseAuth.instance.currentUser();
+    FirebaseDatabase.instance
+        .reference()
+        .child(user.uid)
+        .set({'state': addressController.text});
+  }
+
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -56,29 +83,28 @@ class RegisterScreen extends State<register> {
                 width: size.width * 1),
           ),
             new Container(
-                padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
-                width: 150.0,
-                child: TextFormField(
-                  decoration: new InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 1, color: Colors.deepOrange),
-                    ),
-                    border: const OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.orange, width: 2.0),
-                    ),
-                    hintText: 'Enter your email ID',
-                    prefixIcon: Icon(Icons.email),
-                    labelText: 'Email',
-                    contentPadding:
-                        new EdgeInsets.fromLTRB(20.0, -10.0, 20.0, 10.0),
+              padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
+              width: 150.0,
+              child: TextFormField(
+                controller: _emailController,
+                decoration: new InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 1, color: Colors.blue),
                   ),
-                  validator: (input) =>
-                      input.isEmpty ? 'You must enter an email' : null,
+                  border: const OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Colors.blue, width: 2.0),
+                  ),
+                  hintText: 'Enter your email ID',
+                  prefixIcon: Icon(Icons.email),
+                  labelText: 'Email',
+                  contentPadding:
+                      new EdgeInsets.fromLTRB(20.0, -50.0, 20.0, 10.0),
                 ),
+                validator: (input) =>
+                    input.isEmpty ? 'You must enter an email' : null,
               ),
-            
+            ),
             new Container(
                 padding: EdgeInsets.all(10.0),
                 child: TextFormField(
@@ -101,12 +127,12 @@ class RegisterScreen extends State<register> {
                       10.0,
                     ),
                   ),
-                  obscureText: true,
-                  validator: (input) =>
-                      input.isEmpty ? 'You must enter a password' : null,
                 ),
+                obscureText: true,
+                validator: (input) =>
+                    input.isEmpty ? 'You must enter a password' : null,
               ),
-
+            ),
             new Container(
                 padding: EdgeInsets.all(10.0),
                 child: TextFormField(
@@ -129,12 +155,12 @@ class RegisterScreen extends State<register> {
                       10.0,
                     ),
                   ),
-                  obscureText: true,
-                  validator: (input) =>
-                      input.isEmpty ? 'You must enter a password' : null,
                 ),
+                obscureText: true,
+                validator: (input) =>
+                    input.isEmpty ? 'You must enter a password' : null,
               ),
-            
+            ),
             new Container(
                 padding: EdgeInsets.all(10.0),
                 child: TextFormField(
@@ -157,17 +183,20 @@ class RegisterScreen extends State<register> {
                       10.0,
                     ),
                   ),
-                  obscureText: true,
-                  validator: (input) =>
-                      input.isEmpty ? 'You must enter a password' : null,
                 ),
+                obscureText: false,
+                validator: (input) =>
+                    input.isEmpty ? 'You must enter a password' : null,
               ),
-
+            ),
             new Container(
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.all(10.0),
               child: RaisedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    this._handleSignUp(_emailController.text.trim(),
+                        _passwordController.text.trim());
+                  },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30.0))),
                   label: Text('Create Account',
@@ -177,34 +206,18 @@ class RegisterScreen extends State<register> {
                   splashColor: Colors.lightBlue[200],
                   color: Colors.lightBlue[100]),
             ),
-            new Container(
-                margin: EdgeInsets.only(top: 5, bottom: 10),
-                padding: EdgeInsets.all(10.0),
-                child: RaisedButton.icon(
-                    onPressed: () {},
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(30.0))),
-                  label: Text('Sign in with Google',
-                      style: TextStyle(color: Colors.black, fontSize: 17)),
-                  icon: Icon(Icons.explore, color: Colors.black,),
-                  padding: const EdgeInsets.all(13.0),
-                  splashColor: Colors.lightBlue[100],
-                  color: Colors.lightBlue[200]),
+            new InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => loginScreen()));
+              },
+              child: Text(
+                'Sign in with existing account',
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 15),
               ),
-              new InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => loginScreen()));
-                },
-                child: Text(
-                  'Sign in with existing account',
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 15),
-                ),
-              )
+            )
           ],
         ),
       )),

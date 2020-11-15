@@ -1,6 +1,8 @@
 import 'package:defhacks/Screens/Landing/body.dart';
 import 'package:defhacks/Screens/register.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 void main() {
   runApp(loginScreen());
@@ -40,7 +42,48 @@ class login extends StatefulWidget {
   LoginScreen createState() => LoginScreen();
 }
 
+final FirebaseAuth _auth = FirebaseAuth.instance;
+
+final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+final GoogleSignIn googleSignIn = GoogleSignIn();
+
 class LoginScreen extends State<login> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  Future<FirebaseUser> _handleSigninWithEmail(
+      String email, String password) async {
+    print(email);
+    print(password);
+    AuthResult authResult = await _auth.signInWithEmailAndPassword(
+        email: email.trim(), password: password.trim());
+    final FirebaseUser user = authResult.user;
+
+    //assert(user != null);
+    //assert(await user.getIdToken() != null);
+
+    print("Signed in user");
+    Navigator.push(context, MaterialPageRoute(builder: (context) => Body()));
+    return user;
+  }
+
+  Future<FirebaseUser> _handleSigninWithGoogle(
+      GoogleSignIn googleSignIn) async {
+    final GoogleSignInAccount googleUser = await googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
+    final AuthCredential credential = GoogleAuthProvider.getCredential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    final FirebaseUser user =
+        (await _auth.signInWithCredential(credential)).user;
+    print("signed in " + user.displayName);
+    return user;
+  }
+
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
@@ -56,29 +99,28 @@ class LoginScreen extends State<login> {
                 width: size.width * 1),
             ),
             new Container(
-                padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
-                width: 150.0,
-                child: TextFormField(
-                  decoration: new InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 1, color: Colors.deepOrange),
-                    ),
-                    border: const OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.orange, width: 2.0),
-                    ),
-                    hintText: 'Enter your email ID',
-                    prefixIcon: Icon(Icons.email),
-                    labelText: 'Email',
-                    contentPadding:
-                        new EdgeInsets.fromLTRB(20.0, -10.0, 20.0, 10.0),
+              padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
+              width: 150.0,
+              child: TextFormField(
+                controller: _emailController,
+                decoration: new InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 1, color: Colors.blue),
                   ),
-                  validator: (input) =>
-                      input.isEmpty ? 'You must enter an email' : null,
+                  border: const OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Colors.blue, width: 2.0),
+                  ),
+                  hintText: 'Enter your email ID',
+                  prefixIcon: Icon(Icons.email),
+                  labelText: 'Email',
+                  contentPadding:
+                      new EdgeInsets.fromLTRB(20.0, -10.0, 20.0, 10.0),
                 ),
+                validator: (input) =>
+                    input.isEmpty ? 'You must enter an email' : null,
               ),
-            
+            ),
             new Container(
                 padding: EdgeInsets.all(10.0),
                 child: TextFormField(
@@ -101,10 +143,10 @@ class LoginScreen extends State<login> {
                       10.0,
                     ),
                   ),
-                  obscureText: true,
-                  validator: (input) =>
-                      input.isEmpty ? 'You must enter a password' : null,
                 ),
+                obscureText: true,
+                validator: (input) =>
+                    input.isEmpty ? 'You must enter a password' : null,
               ),
             
 
@@ -112,7 +154,10 @@ class LoginScreen extends State<login> {
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.all(10.0),
               child: RaisedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    _handleSigninWithEmail(
+                        _emailController.text.trim(), _passwordController.text);
+                  },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30.0))),
                   label: Text('Sign In',
@@ -123,18 +168,34 @@ class LoginScreen extends State<login> {
                   color: Colors.lightBlue[100]),
             ),
             new Container(
-                margin: EdgeInsets.only(top: 5, bottom: 10),
-                padding: EdgeInsets.all(10.0),
-                child: RaisedButton.icon(
-                    onPressed: () {},
+              margin: EdgeInsets.only(top: 5, bottom: 10),
+              padding: EdgeInsets.all(10.0),
+              child: RaisedButton.icon(
+                  onPressed: () {
+                    _handleSigninWithGoogle(googleSignIn);
+                  },
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30.0))),
                   label: Text('Sign in with Google',
                       style: TextStyle(color: Colors.black, fontSize: 17)),
-                  icon: Icon(Icons.explore, color: Colors.black,),
+                  icon: Icon(
+                    Icons.explore,
+                    color: Colors.black,
+                  ),
                   padding: const EdgeInsets.all(13.0),
                   splashColor: Colors.lightBlue[100],
                   color: Colors.lightBlue[200]),
+            ),
+            new InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => registerscreen()));
+              },
+              child: Text(
+                'Create Account',
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 15),
               ),
               new InkWell(
                 onTap: () {
