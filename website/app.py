@@ -18,7 +18,7 @@ from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
-app.config["IMAGE_UPLOADS"] = "/Users/samarth/Desktop/defhacks/website"
+app.config["IMAGE_UPLOADS"] = "/Users/samarth/Desktop/defhacks/website/result_img"
 
 name_array = []
 email_array = []
