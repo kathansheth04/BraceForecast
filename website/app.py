@@ -74,18 +74,18 @@ def upload_image():
             # return redirect(request.url)
     
     print("[INFO] loading model...")
-    model = load_model(config.MODEL_PATH)
+    model = load_model(os.path.sep.join(["output", "fire_detection.keras"]))
 
     print("[INFO] predicting...")
-    bracePaths = list(paths.list_images(config.BRACE_PATH))
-    nonBracePaths = list(paths.list_images(config.SAMPLE_BRACE_PATH))
+    bracePaths = list(paths.list_images("yesBrace"))
+    nonBracePaths = list(paths.list_images("noBrace"))
 
 
     # combine the two image path lists, randomly shuffle them, and sample
     # them
-    imagePaths = list(paths.list_images(config.SAMPLE_BRACE_PATH))
+    imagePaths = list(paths.list_images("/Users/samarth/Desktop/defhacks/machineLearning/sampdata"))
     random.shuffle(imagePaths)
-    imagePaths = imagePaths[:config.SAMPLE_SIZE]
+    imagePaths = imagePaths[:50]
 
     # loop over the sampled image paths
     for (i, imagePath) in enumerate(imagePaths):
@@ -97,11 +97,12 @@ def upload_image():
         # aspect ratio
         image = cv2.resize(image, (128, 128))
         image = image.astype("float32") / 255.0
-            
+             
         # make predictions on the image
         preds = model.predict(np.expand_dims(image, axis=0))[0]
         j = np.argmax(preds)
-        label = config.CLASSES[j]
+        CLASSES = ["Non-Brace", "Brace"]
+        label = CLASSES[j]
 
         # draw the activity on the output frame
 
@@ -119,7 +120,7 @@ def upload_image():
 
         # write the output image to disk	 
         filename = "{}.png".format(i)
-        p = os.path.sep.join([config.OUTPUT_IMAGE_PATH, filename])
+        p = os.path.sep.join([os.path.sep.join(["output", "examples"]), filename])
         cv2.imwrite(p, output)
     
     return render_template("index.html")
