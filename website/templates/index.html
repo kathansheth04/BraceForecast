@@ -1,9 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Projection by TEMPLATED
-	templated.co @templatedco
-	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
--->
 <html>
 	<head>
 		<title>Brace Forecast</title>
@@ -17,7 +12,6 @@
 			<header id="header">
 				<div class="inner">
 					<a href="index.html" class="logo"><strong>Brace</strong>Forecast</a>
-					<!-- <img class = "logo" src="./images/Logo.gif"/> -->
 					<!-- <nav id="nav">
 						<a href="index.html">Home</a>
 					</nav> -->
@@ -29,14 +23,16 @@
 			<section id="banner">
 				<div class="inner">
 					<header>
-						<h1 style="color: white; font-size: 5em;">Do you need braces?</h1>
+						<h1 style="color: #296d98; font-size: 5em;">Do you need braces? Let's take a look!</h1>
 					</header>
+
+					<img class = "logo" src="../static/images/Logo.gif"/>
 
 					
 
-					<!-- <div class="flex ">
+					<div class="flex ">
 
-						<div>
+						<!-- <div>
 							<span class="icon fa-car"></span>
 							<h3>Aliquam</h3>
 							<p>Suspendisse amet ullamco</p>
@@ -54,39 +50,54 @@
 							<p>Nulla vitae mauris non felis</p>
 						</div>
 
-					</div>
+					</div> -->
 
 					<footer>
 						<a href="#footer" class="button">Learn More</a>
 					</footer>
-				</div> -->
+				</div> 
 			</section>
 
 
 		<!-- Three -->
 			<section id="three" class="wrapper align-center">
+				<h1 style="color: #296d98; font-size: 3em;">Oral Hygiene Tips</h1>
 				<div class="inner">
 					<div class="flex flex-2">
 						<article>
 							<div class="image round">
-								<img src="static/images/pic01.jpg" alt="Pic 01" />
+								<img src="../static/images/brush.webp" alt="Pic 01" />
 							</div>
 							<header>
-								<h3>Lorem ipsum<br /> dolor amet nullam</h3>
+								<h3>Brushing</h3>
 							</header>
-							<p>Morbi in sem quis dui placerat ornare. Pellentesquenisi<br />euismod in, pharetra a, ultricies in diam sed arcu. Cras<br />consequat  egestas augue vulputate.</p>
+							<p>Practice good technique.
+								<br>
+								Brush your teeth for two minutes. 
+								<br>
+								Keep your equipment clean.
+								<br>
+								Try to keep it separate from other toothbrushes in the same holder to prevent cross-contamination. 
+								<br>
+								Invest in a new toothbrush every three months</p>
 							<!-- <footer>
 								<a href="#" class="button">Learn More</a>
 							</footer> -->
 						</article>
 						<article>
 							<div class="image round">
-								<img src="static/images/pic02.jpg" alt="Pic 02" />
+								<img src="../static/images/floss.jpg" alt="Pic 02" />
 							</div>
 							<header>
-								<h3>Sed feugiat<br /> tempus adipicsing</h3>
+								<h3>Flossing</h3>
 							</header>
-							<p>Pellentesque fermentum dolor. Aliquam quam lectus<br />facilisis auctor, ultrices ut, elementum vulputate, nunc<br /> blandit ellenste egestagus commodo.</p>
+							<p>Don't rush. 
+								<br>
+								Don't snap the floss into your gums. When the floss reaches your gum line, curve it against one tooth, making a c shape.
+								<br>
+								Use the floss to gently rub the side of the tooth in an up-and-down motion.
+								<br>
+								 If you find it hard to handle the floss,  try using a water flosser.</p>
 							<!-- <footer>
 								<a href="#" class="button">Learn More</a>
 							</footer> -->
@@ -99,7 +110,7 @@
 			<footer id="footer">
 				<div class="inner">
 
-					<h3>Brace Yourself</h3>
+					<h1 style="color: #296d98; font-size: 3em;">Brace Yourself</h1>
 
 					<form action="/send" method="POST" role="form">
 
@@ -119,8 +130,11 @@
 						<div class="text-center"><button type="submit">Save Information</button></div>
 					</form>
 
+					<h1 style="color: #296d98;"><strong>Uploading Instructions</strong></h1>
+					<p>Please upload a picture of your teeth while making sure that both your front and bottom teeth can be seen.</p>
+
 					<form action="/upload-image" method="POST" enctype="multipart/form-data">
-						<input type="file" accept="image/*" id="file-input" name="file_image" id="file_image">
+						<input type="file" accept="image/*" id="file-input" name="file_image" id="file_image" class = "text-center">
 				
 						<script>
 							const fileInput = document.getElementById('file-input');
