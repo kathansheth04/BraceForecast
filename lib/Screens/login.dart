@@ -66,7 +66,7 @@ class LoginScreen extends State<login> {
 
     print("Signed in user");
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Dashboard()));
+        context, MaterialPageRoute(builder: (context) => uploadScreen()));
     return user;
   }
 
@@ -98,10 +98,10 @@ class LoginScreen extends State<login> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Positioned(
-            top: 10,
-            left: -10,
-            child: Image.asset("lib/Screens/assets/smallLogo.gif",
-                width: size.width * 1),
+              top: 10,
+              left: -10,
+              child: Image.asset("lib/Screens/assets/smallLogo.gif",
+                  width: size.width * 1),
             ),
             new Container(
               padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
@@ -150,7 +150,6 @@ class LoginScreen extends State<login> {
                     input.isEmpty ? 'You must enter a password' : null,
               ),
             ),
-            
             new Container(
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.all(10.0),
