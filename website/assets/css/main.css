@@ -2267,7 +2267,7 @@ input[type="checkbox"]:checked + label:before,
 input[type="radio"]:checked + label:before {
   background: #b3e5fc;
   border-color: #b3e5fc;
-  color: #ffffff;
+  color: #81d4fa;
   content: "\f00c";
 }
 
@@ -2688,7 +2688,7 @@ button,
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
   background-color: transparent;
   box-shadow: inset 0 0 0 3px #b3e5fc;
-  color: #fff !important;
+  color: #000000 !important;
   border-radius: 30px;
   border: 0;
   cursor: pointer;
@@ -2710,7 +2710,7 @@ input[type="reset"]:hover,
 input[type="button"]:hover,
 button:hover,
 .button:hover {
-  background-color: #b3e5fc;
+  background-color: #8adfb0;
 }
 
 input[type="submit"]:active,
@@ -2770,7 +2770,7 @@ button.alt,
 .button.alt {
   background-color: transparent;
   box-shadow: inset 0 0 0 3px #fff;
-  color: #fff !important;
+  color: #000000 !important;
 }
 
 input[type="submit"].alt:hover,
@@ -2794,7 +2794,7 @@ input[type="reset"].alt.icon:before,
 input[type="button"].alt.icon:before,
 button.alt.icon:before,
 .button.alt.icon:before {
-  color: #bbb;
+  color: #81d4fa;
 }
 
 input[type="submit"].special,
@@ -2803,7 +2803,7 @@ input[type="button"].special,
 button.special,
 .button.special {
   background-color: #b3e5fc;
-  color: #ffffff !important;
+  color: #81d4fa !important;
 }
 
 input[type="submit"].special:hover,
@@ -2832,9 +2832,9 @@ button.disabled,
 button:disabled,
 .button.disabled,
 .button:disabled {
-  background-color: #9a9a9a !important;
+  background-color: #81d4fa !important;
   box-shadow: inset 0 -0.15em 0 0 rgba(0, 0, 0, 0.15);
-  color: #fff !important;
+  color: #81d4fa !important;
   cursor: default;
   opacity: 0.25;
 }
@@ -2921,7 +2921,7 @@ button:disabled,
 }
 
 #header a:hover {
-  color: #ffffff;
+  color: #000000;
 }
 
 #header a:last-child {
@@ -3013,7 +3013,7 @@ button:disabled,
 }
 
 #navPanel a:not(.close) {
-  border-top: solid 1px #81d4fa;
+  border-top: solid 1px #000000;
   color: #fff;
   font-weight: 600;
   display: block;
@@ -3073,10 +3073,10 @@ button:disabled,
 
 #banner {
   padding: 8em 0 9em 0;
-  background: rgb(179, 229, 252);
+  background: rgb(129, 212, 250);
   background: linear-gradient(
     90deg,
-    rgba(179, 229, 252, 1) 47%,
+    rgba(129, 212, 250, 1) 80%,
     rgba(255, 255, 255, 1) 100%
   );
   background-size: cover;
@@ -3254,11 +3254,27 @@ button:disabled,
   }
 }
 
+/*Three*/
+
+#three {
+  background: rgb(129, 212, 250);
+  background: linear-gradient(
+    90deg,
+    rgba(129, 212, 250, 1) 48%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
 /* Footer */
 
 #footer {
   padding: 6em 0;
-  background: #81d4fa;
+  background: rgb(129, 212, 250);
+  background: linear-gradient(
+    90deg,
+    rgba(129, 212, 250, 1) 36%,
+    rgba(255, 255, 255, 1) 100%
+  );
   color: #fff;
   text-align: center;
 }
