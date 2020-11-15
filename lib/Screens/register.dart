@@ -127,12 +127,12 @@ class RegisterScreen extends State<register> {
                       10.0,
                     ),
                   ),
-                ),
                 obscureText: true,
                 validator: (input) =>
                     input.isEmpty ? 'You must enter a password' : null,
               ),
-            ),
+        ),
+
             new Container(
                 padding: EdgeInsets.all(10.0),
                 child: TextFormField(
@@ -155,12 +155,12 @@ class RegisterScreen extends State<register> {
                       10.0,
                     ),
                   ),
-                ),
                 obscureText: true,
                 validator: (input) =>
                     input.isEmpty ? 'You must enter a password' : null,
               ),
-            ),
+          ),
+    
             new Container(
                 padding: EdgeInsets.all(10.0),
                 child: TextFormField(
@@ -183,12 +183,12 @@ class RegisterScreen extends State<register> {
                       10.0,
                     ),
                   ),
-                ),
                 obscureText: false,
                 validator: (input) =>
                     input.isEmpty ? 'You must enter a password' : null,
               ),
             ),
+  
             new Container(
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.all(10.0),

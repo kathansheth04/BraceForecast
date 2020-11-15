@@ -8,6 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:defhacks/Screens/Landing/body.dart';
+import 'package:defhacks/Screens/upload.dart';
 import 'package:defhacks/main.dart';
 
 void main() {

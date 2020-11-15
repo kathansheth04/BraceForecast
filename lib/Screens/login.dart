@@ -126,34 +126,30 @@ class LoginScreen extends State<login> {
               ),
             ),
             new Container(
-                padding: EdgeInsets.all(10.0),
-                child: TextFormField(
-                  decoration: new InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 1, color: Colors.deepOrange),
-                    ),
-                    border: const OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.orange, width: 2.0),
-                    ),
-                    hintText: 'Enter your password here',
-                    prefixIcon: Icon(Icons.lock),
-                    labelText: 'Password',
-                    contentPadding: new EdgeInsets.fromLTRB(
-                      20.0,
-                      10.0,
-                      20.0,
-                      10.0,
-                    ),
+              padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
+              width: 150.0,
+              child: TextFormField(
+                controller: _passwordController,
+                decoration: new InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 1, color: Colors.blue),
                   ),
+                  border: const OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Colors.blue, width: 2.0),
+                  ),
+                  hintText: 'Enter your password here',
+                  prefixIcon: Icon(Icons.lock),
+                  labelText: 'Password',
+                  contentPadding:
+                      new EdgeInsets.fromLTRB(20.0, -10.0, 20.0, 10.0),
                 ),
                 obscureText: true,
                 validator: (input) =>
                     input.isEmpty ? 'You must enter a password' : null,
               ),
+            ),
             
-
             new Container(
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.all(10.0),
@@ -201,21 +197,7 @@ class LoginScreen extends State<login> {
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontSize: 15),
               ),
-              new InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => registerscreen()));
-                },
-                child: Text(
-                  'Create Account',
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 15),
-                  
-                ),
-              )
+            )
           ],
         ),
       )),
