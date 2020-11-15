@@ -18,7 +18,7 @@ from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
-app.config["IMAGE_UPLOADS"] = "/Users/samarth/Desktop/defhacks/website/result_img"
+app.config["IMAGE_UPLOADS"] = "/Users/samarth/Desktop/defhacks/website"
 
 name_array = []
 email_array = []
@@ -71,4 +71,60 @@ def upload_image():
 
             print(image)
 
-            return redirect(request.url)
+            # return redirect(request.url)
+    
+    print("[INFO] loading model...")
+    model = load_model(config.MODEL_PATH)
+
+    print("[INFO] predicting...")
+    bracePaths = list(paths.list_images(config.BRACE_PATH))
+    nonBracePaths = list(paths.list_images(config.SAMPLE_BRACE_PATH))
+
+
+    # combine the two image path lists, randomly shuffle them, and sample
+    # them
+    imagePaths = list(paths.list_images(config.SAMPLE_BRACE_PATH))
+    random.shuffle(imagePaths)
+    imagePaths = imagePaths[:config.SAMPLE_SIZE]
+
+    # loop over the sampled image paths
+    for (i, imagePath) in enumerate(imagePaths):
+        # load the image and clone it
+        image = cv2.imread(imagePath)
+        output = image.copy()
+
+        # resize the input image to be a fixed 128x128 pixels, ignoring
+        # aspect ratio
+        image = cv2.resize(image, (128, 128))
+        image = image.astype("float32") / 255.0
+            
+        # make predictions on the image
+        preds = model.predict(np.expand_dims(image, axis=0))[0]
+        j = np.argmax(preds)
+        label = config.CLASSES[j]
+
+        # draw the activity on the output frame
+
+        if label == "Non-Brace":
+            text = "Non-Brace"
+
+        else:
+            text = "Brace"
+
+                
+
+        output = imutils.resize(output, width=500)
+        cv2.putText(output, text, (35, 50), cv2.FONT_HERSHEY_SIMPLEX,
+            1.25, (0, 255, 0), 5)
+
+        # write the output image to disk	 
+        filename = "{}.png".format(i)
+        p = os.path.sep.join([config.OUTPUT_IMAGE_PATH, filename])
+        cv2.imwrite(p, output)
+    
+    return render_template("index.html")
+
+if __name__ == "__main__":
+    app.debug = True
+    port = int(os.environ.get('PORT', 5000))
+    app.run()

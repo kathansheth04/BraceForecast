@@ -117,19 +117,19 @@
 						</div>
 
 						<div class="text-center"><button type="submit">Save Information</button></div>
+					</form>
 
-						<form action="/upload-image" method="POST" enctype="multipart/form-data">
-							<input type="file" accept="image/*" id="file-input" name="file_image" id="file_image">
+					<form action="/upload-image" method="POST" enctype="multipart/form-data">
+						<input type="file" accept="image/*" id="file-input" name="file_image" id="file_image">
 				
-							<script>
-							  const fileInput = document.getElementById('file-input');
+						<script>
+							const fileInput = document.getElementById('file-input');
 				
-							  fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
-							</script>
+							fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
+						</script>
 				
-							<div class="text-center"><button type="submit">Upload Image</button></div>
+						<div class="text-center"><button type="submit">Upload Image</button></div>
 				
-						</form>
 					</form>
 
 					<div class="copyright">
