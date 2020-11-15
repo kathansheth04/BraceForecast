@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:defhacks/Screens/clinics.dart';
 import 'package:defhacks/Screens/dashboard.dart';
+import 'package:flutter/services.dart';
 import 'login.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() {
   runApp(Clinics());
@@ -93,10 +95,20 @@ class _MyHomePageState extends State<clinics> {
     });
   }
 
+  _launchURL(String uri) async {
+    String url = 'https://maps.google.com/' + uri.toString();
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Color(0xFF81D4FA),
         title: Text('Clinics Near You'),
         actions: [
           Padding(
@@ -125,9 +137,212 @@ class _MyHomePageState extends State<clinics> {
         onTap: _onItemTapped,
       ),
       body: Container(
-          child: new Stack(
-        children: [],
-      )),
+          child: new SingleChildScrollView(
+              child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(65, 65, 65, 65),
+            child: new Column(
+              children: [
+                Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Color(0xFF81D4FA),
+                    shadowColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Column(children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        child: ListTile(
+                          title: new Center(
+                            child: Text(
+                              "Milpitas Dental Center",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                      ButtonBar(
+                        alignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          FlatButton(
+                            color: new Color(0x000000),
+                            onPressed: () {
+                              _launchURL("995+County+Hwy+G4+STE+215");
+                            },
+                            child: new Icon(Icons.room),
+                          ),
+                          FlatButton(
+                            color: new Color(0x000000),
+                            onPressed: () {
+                              // Perform some action
+                            },
+                            child: const Icon(Icons.phone),
+                          ),
+                        ],
+                      ),
+                    ])),
+                Card(
+                    margin: new EdgeInsets.symmetric(vertical: 20),
+                    clipBehavior: Clip.antiAlias,
+                    color: Color(0xFF81D4FA),
+                    shadowColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Column(children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        child: ListTile(
+                          title: new Center(
+                            child: Text(
+                              "Milpitas Town Center Dental Care",
+                              style: TextStyle(color: Colors.white),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                      ButtonBar(
+                        alignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          FlatButton(
+                            color: new Color(0x000000),
+                            onPressed: () {
+                              // Perform some action
+                            },
+                            child: new Icon(Icons.room),
+                          ),
+                          FlatButton(
+                            color: new Color(0x000000),
+                            onPressed: () {
+                              // Perform some action
+                            },
+                            child: const Icon(Icons.phone),
+                          ),
+                        ],
+                      ),
+                    ])),
+                Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Color(0xFF81D4FA),
+                    shadowColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Column(children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        child: ListTile(
+                          title: new Center(
+                            child: Text(
+                              "Brilliance Dental Care",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                      ButtonBar(
+                        alignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          FlatButton(
+                            color: new Color(0x000000),
+                            onPressed: () {
+                              // Perform some action
+                            },
+                            child: new Icon(Icons.room),
+                          ),
+                          FlatButton(
+                            color: new Color(0x000000),
+                            onPressed: () {
+                              // Perform some action
+                            },
+                            child: const Icon(Icons.phone),
+                          ),
+                        ],
+                      ),
+                    ])),
+                Card(
+                    margin: new EdgeInsets.symmetric(vertical: 20),
+                    clipBehavior: Clip.antiAlias,
+                    color: Color(0xFF81D4FA),
+                    shadowColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Column(children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        child: ListTile(
+                          title: new Center(
+                            child: Text(
+                              "City Square Dental Care",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                      ButtonBar(
+                        alignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          FlatButton(
+                            color: new Color(0x000000),
+                            onPressed: () {
+                              // Perform some action
+                            },
+                            child: new Icon(Icons.room),
+                          ),
+                          FlatButton(
+                            color: new Color(0x000000),
+                            onPressed: () {
+                              // Perform some action
+                            },
+                            child: const Icon(Icons.phone),
+                          ),
+                        ],
+                      ),
+                    ])),
+                Card(
+                    clipBehavior: Clip.antiAlias,
+                    color: Color(0xFF81D4FA),
+                    shadowColor: Colors.black,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Column(children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        child: ListTile(
+                          title: new Center(
+                            child: Text(
+                              "E Dental Care",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ),
+                      ),
+                      ButtonBar(
+                        alignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          FlatButton(
+                            color: new Color(0x000000),
+                            onPressed: () {
+                              // Perform some action
+                            },
+                            child: new Icon(Icons.room),
+                          ),
+                          FlatButton(
+                            color: new Color(0x000000),
+                            onPressed: () {
+                              // Perform some action
+                            },
+                            child: const Icon(Icons.phone),
+                          ),
+                        ],
+                      ),
+                    ])),
+              ],
+            ),
+          )
+        ],
+      ))),
     );
   }
 }

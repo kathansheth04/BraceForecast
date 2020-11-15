@@ -1,0 +1,27 @@
+{
+    "0": {
+        "name": "Milpitas Dental Center",
+        "address": "995+County+Hwy+G4+STE+215",
+        "number": "(408)263-6464"
+    },
+    "1": {
+        "name": "Milpitas Town Center Dental",
+        "address": "491+E+Calaveras+Blvd",
+        "number": "(408)262-6608"
+    },
+    "2": {
+        "name": "Brilliance Dental Care",
+        "address": "52+Skytop+St+suite+40",
+        "number": "(408)755-9800"
+    },
+    "3": {
+        "name": "City Square Dental Care",
+        "address": "1780+N+Milpitas+Blvd,",
+        "number": "(408)946-9234"
+    },
+    "4": {
+        "name": "E Dental Care",
+        "address": "1156+Jacklin+Rd",
+        "number": "(408)719-8295"
+    }
+}
