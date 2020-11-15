@@ -1,5 +1,6 @@
 import 'package:defhacks/Screens/dashboard.dart';
 import 'package:defhacks/Screens/register.dart';
+import 'package:defhacks/Screens/upload.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -97,13 +98,10 @@ class LoginScreen extends State<login> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Positioned(
-              top: 10,
-              left: -10,
-              child: Image.asset(
-                "lib/Screens/assets/logo.gif",
-                width: size.width * 0.5,
-                height: size.height * 0.45,
-              ),
+            top: 10,
+            left: -10,
+            child: Image.asset("lib/Screens/assets/smallLogo.gif",
+                width: size.width * 1),
             ),
             new Container(
               padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
@@ -129,7 +127,8 @@ class LoginScreen extends State<login> {
               ),
             ),
             new Container(
-              padding: EdgeInsets.all(10.0),
+              padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
+              width: 150.0,
               child: TextFormField(
                 controller: _passwordController,
                 decoration: new InputDecoration(
@@ -141,20 +140,17 @@ class LoginScreen extends State<login> {
                         const BorderSide(color: Colors.blue, width: 2.0),
                   ),
                   hintText: 'Enter your password here',
-                  prefixIcon: Icon(Icons.security),
+                  prefixIcon: Icon(Icons.lock),
                   labelText: 'Password',
-                  contentPadding: new EdgeInsets.fromLTRB(
-                    20.0,
-                    10.0,
-                    20.0,
-                    10.0,
-                  ),
+                  contentPadding:
+                      new EdgeInsets.fromLTRB(20.0, -10.0, 20.0, 10.0),
                 ),
                 obscureText: true,
                 validator: (input) =>
                     input.isEmpty ? 'You must enter a password' : null,
               ),
             ),
+            
             new Container(
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.all(10.0),

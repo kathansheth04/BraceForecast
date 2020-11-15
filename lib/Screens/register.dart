@@ -77,117 +77,120 @@ class RegisterScreen extends State<register> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Positioned(
-              top: 10,
-              left: -10,
-              child: Image.asset(
-                "lib/Screens/assets/logo.gif",
-                width: size.width * 0.5,
-                height: size.height * 0.45,
-              ),
-            ),
+            left: -10,
+            child: Image.asset("lib/Screens/assets/smallLogo.gif",
+                width: size.width * 0.5),
+          ),
             new Container(
-              padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
-              width: 150.0,
-              child: TextFormField(
-                controller: _emailController,
-                decoration: new InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 1, color: Colors.blue),
+                padding: EdgeInsets.all(10.0),
+                child: TextFormField(
+                  decoration: new InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(width: 1, color: Colors.lightBlue),
+                    ),
+                    border: const OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.lightBlue, width: 2.0),
+                    ),
+                    hintText: 'Enter your email ID',
+                    prefixIcon: Icon(Icons.person),
+                    labelText: 'Email',
+                    contentPadding: new EdgeInsets.fromLTRB(
+                      20.0,
+                      10.0,
+                      20.0,
+                      10.0,
+                    ),
                   ),
-                  border: const OutlineInputBorder(
-                    borderSide:
-                        const BorderSide(color: Colors.blue, width: 2.0),
-                  ),
-                  hintText: 'Enter your email ID',
-                  prefixIcon: Icon(Icons.email),
-                  labelText: 'Email',
-                  contentPadding:
-                      new EdgeInsets.fromLTRB(20.0, -50.0, 20.0, 10.0),
-                ),
                 validator: (input) =>
-                    input.isEmpty ? 'You must enter an email' : null,
+                    input.isEmpty ? 'You must enter an email ID' : null,
               ),
-            ),
+        ),
             new Container(
-              padding: EdgeInsets.all(10.0),
-              child: TextFormField(
-                decoration: new InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 1, color: Colors.blue),
+                padding: EdgeInsets.all(10.0),
+                child: TextFormField(
+                  decoration: new InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(width: 1, color: Colors.lightBlue),
+                    ),
+                    border: const OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.lightBlue, width: 2.0),
+                    ),
+                    hintText: 'Enter your password here',
+                    prefixIcon: Icon(Icons.lock),
+                    labelText: 'Password',
+                    contentPadding: new EdgeInsets.fromLTRB(
+                      20.0,
+                      10.0,
+                      20.0,
+                      10.0,
+                    ),
                   ),
-                  border: const OutlineInputBorder(
-                    borderSide:
-                        const BorderSide(color: Colors.blue, width: 2.0),
-                  ),
-                  hintText: 'Enter your password here',
-                  prefixIcon: Icon(Icons.vpn_key),
-                  labelText: 'Password',
-                  contentPadding: new EdgeInsets.fromLTRB(
-                    20.0,
-                    10.0,
-                    20.0,
-                    10.0,
-                  ),
-                ),
                 obscureText: true,
                 validator: (input) =>
                     input.isEmpty ? 'You must enter a password' : null,
               ),
-            ),
+        ),
+
             new Container(
-              padding: EdgeInsets.all(10.0),
-              child: TextFormField(
-                controller: _passwordController,
-                decoration: new InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 1, color: Colors.blue),
+                padding: EdgeInsets.all(10.0),
+                child: TextFormField(
+                  decoration: new InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(width: 1, color: Colors.lightBlue),
+                    ),
+                    border: const OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.lightBlue, width: 2.0),
+                    ),
+                    hintText: 'Confirm password here',
+                    prefixIcon: Icon(Icons.vpn_key),
+                    labelText: 'Confirm Password ',
+                    contentPadding: new EdgeInsets.fromLTRB(
+                      20.0,
+                      10.0,
+                      20.0,
+                      10.0,
+                    ),
                   ),
-                  border: const OutlineInputBorder(
-                    borderSide:
-                        const BorderSide(color: Colors.blue, width: 2.0),
-                  ),
-                  hintText: 'Confirm password here',
-                  prefixIcon: Icon(Icons.security),
-                  labelText: 'Confirm Password ',
-                  contentPadding: new EdgeInsets.fromLTRB(
-                    20.0,
-                    10.0,
-                    20.0,
-                    10.0,
-                  ),
-                ),
                 obscureText: true,
                 validator: (input) =>
                     input.isEmpty ? 'You must enter a password' : null,
               ),
-            ),
+          ),
+    
             new Container(
-              padding: EdgeInsets.all(10.0),
-              child: TextFormField(
-                controller: addressController,
-                decoration: new InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 1, color: Colors.blue),
+                padding: EdgeInsets.all(10.0),
+                child: TextFormField(
+                  decoration: new InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(width: 1, color: Colors.lightBlue),
+                    ),
+                    border: const OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.lightBlue, width: 2.0),
+                    ),
+                    hintText: 'Address',
+                    prefixIcon: Icon(Icons.home),
+                    labelText: 'Enter Address',
+                    contentPadding: new EdgeInsets.fromLTRB(
+                      20.0,
+                      10.0,
+                      20.0,
+                      10.0,
+                    ),
                   ),
-                  border: const OutlineInputBorder(
-                    borderSide:
-                        const BorderSide(color: Colors.blue, width: 2.0),
-                  ),
-                  hintText: 'Address',
-                  prefixIcon: Icon(Icons.home_outlined),
-                  labelText: 'Enter Address',
-                  contentPadding: new EdgeInsets.fromLTRB(
-                    20.0,
-                    10.0,
-                    20.0,
-                    10.0,
-                  ),
-                ),
                 obscureText: false,
                 validator: (input) =>
                     input.isEmpty ? 'You must enter a password' : null,
               ),
             ),
+  
             new Container(
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.all(10.0),

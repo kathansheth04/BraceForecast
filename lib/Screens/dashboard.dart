@@ -3,6 +3,7 @@ import 'package:defhacks/Screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:defhacks/Screens/clinics.dart';
+import 'package:defhacks/Screens/upload.dart';
 import 'login.dart';
 
 void main() {
