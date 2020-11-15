@@ -88,7 +88,7 @@ class _MyHomePageState extends State<dashboard> {
       } else {
         _selectedIndex = 1;
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Clinics()));
+            context, MaterialPageRoute(builder: (context) => uploadScreen()));
       }
     });
   }
