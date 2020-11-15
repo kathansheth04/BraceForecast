@@ -2689,7 +2689,6 @@ button,
   background-color: transparent;
   box-shadow: inset 0 0 0 3px #b3e5fc;
   color: #000000 !important;
-  border-radius: 30px;
   border: 0;
   cursor: pointer;
   display: inline-block;
@@ -2705,17 +2704,19 @@ button,
   white-space: nowrap;
   border: 0;
   border-radius: 0;
+  border-color: #555;
+  border-width: 0.2em;
   outline: 0;
   background: #b3e5fc;
-  box-shadow: 1px 0px 1px #203891, 0px 1px 1px #3852b1, 2px 1px 1px #203891,
-    1px 2px 1px #3852b1, 3px 2px 1px #203891, 2px 3px 1px #3852b1,
-    4px 3px 1px #203891, 3px 4px 1px #3852b1, 5px 4px 1px #203891,
-    4px 5px 1px #3852b1, 6px 5px 1px #203891;
+  box-shadow: 1px 0px 1px #84899b, 0px 1px 1px#84899b, 2px 1px 1px#84899b,
+    1px 2px 1px#84899b, 3px 2px 1px#84899b, 2px 3px 1px#84899b,
+    4px 3px 1px#84899b, 3px 4px 1px#84899b, 5px 4px 1px#84899b,
+    4px 5px 1px#84899b, 6px 5px 1px#84899b;
   color: white;
   white-space: nowrap;
   padding: 9px 16px;
   position: relative;
-  border-radius: 16px;
+  border-radius: 3px;
   text-align: center;
 }
 
@@ -2725,6 +2726,7 @@ input[type="button"]:hover,
 button:hover,
 .button:hover {
   background-color: #8adfb0;
+  transform: scale(1.2);
 }
 
 input[type="submit"]:active,
@@ -2899,7 +2901,7 @@ button:disabled,
 
 #header {
   color: #296d98;
-  background-color: beige;
+  background-color: #f1ece3;
   cursor: default;
   height: 3.25em;
   left: 0;
@@ -2935,6 +2937,7 @@ button:disabled,
   position: absolute;
   top: 0;
   font-size: 2em;
+  margin-bottom: 1em;
 }
 
 #header .logo strong {
@@ -3107,7 +3110,7 @@ button:disabled,
 
 #banner {
   padding: 8em 0 9em 0;
-  background-color: beige;
+  background-color: #f1ece3;
   background-size: cover;
   background-position: bottom;
   background-attachment: fixed;
@@ -3286,7 +3289,7 @@ button:disabled,
 /*Three*/
 
 #three {
-  background-color: beige;
+  background-color: #f1ece3;
 }
 
 #three img {
@@ -3298,7 +3301,7 @@ button:disabled,
 
 #footer {
   padding: 6em 0;
-  background-color: beige;
+  background-color: #f1ece3;
   color: #296d98;
   text-align: center;
 }
