@@ -57,3 +57,18 @@ def send():
         return redirect(request.url)
 
     return render_template('index.html')
+
+@app.route("/upload-image", methods=["GET", "POST"])
+def upload_image():
+
+    if request.method == "POST":
+
+        if request.files:
+
+            image = request.files["file_image"]
+
+            image.save(os.path.join(app.config["IMAGE_UPLOADS"], "" + email_array[0] + ".png"))
+
+            print(image)
+
+            return redirect(request.url)
