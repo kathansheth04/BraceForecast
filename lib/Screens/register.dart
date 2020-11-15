@@ -10,6 +10,7 @@ class registerscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -51,7 +52,7 @@ class RegisterScreen extends State<register> {
             Positioned(
             top: 10,
             left: -10,
-            child: Image.asset("lib/Screens/assets/logo.gif",
+            child: Image.asset("lib/Screens/assets/smallLogo.gif",
                 width: size.width * 1),
           ),
             new Container(
@@ -91,7 +92,7 @@ class RegisterScreen extends State<register> {
                           const BorderSide(color: Colors.orange, width: 2.0),
                     ),
                     hintText: 'Enter your password here',
-                    prefixIcon: Icon(Icons.vpn_key),
+                    prefixIcon: Icon(Icons.lock),
                     labelText: 'Password',
                     contentPadding: new EdgeInsets.fromLTRB(
                       20.0,
@@ -119,7 +120,7 @@ class RegisterScreen extends State<register> {
                           const BorderSide(color: Colors.orange, width: 2.0),
                     ),
                     hintText: 'Confirm password here',
-                    prefixIcon: Icon(Icons.security),
+                    prefixIcon: Icon(Icons.vpn_key),
                     labelText: 'Confirm Password ',
                     contentPadding: new EdgeInsets.fromLTRB(
                       20.0,
@@ -147,7 +148,7 @@ class RegisterScreen extends State<register> {
                           const BorderSide(color: Colors.orange, width: 2.0),
                     ),
                     hintText: 'Address',
-                    prefixIcon: Icon(Icons.security),
+                    prefixIcon: Icon(Icons.home),
                     labelText: 'Enter Address',
                     contentPadding: new EdgeInsets.fromLTRB(
                       20.0,

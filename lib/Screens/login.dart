@@ -10,6 +10,7 @@ class loginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -51,9 +52,9 @@ class LoginScreen extends State<login> {
             Positioned(
             top: 10,
             left: -10,
-            child: Image.asset("lib/Screens/assets/logo.gif",
+            child: Image.asset("lib/Screens/assets/smallLogo.gif",
                 width: size.width * 1),
-          ),
+            ),
             new Container(
                 padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
                 width: 150.0,
@@ -91,7 +92,7 @@ class LoginScreen extends State<login> {
                           const BorderSide(color: Colors.orange, width: 2.0),
                     ),
                     hintText: 'Enter your password here',
-                    prefixIcon: Icon(Icons.security),
+                    prefixIcon: Icon(Icons.lock),
                     labelText: 'Password',
                     contentPadding: new EdgeInsets.fromLTRB(
                       20.0,
@@ -105,7 +106,8 @@ class LoginScreen extends State<login> {
                       input.isEmpty ? 'You must enter a password' : null,
                 ),
               ),
-              
+            
+
             new Container(
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.all(10.0),
@@ -146,6 +148,7 @@ class LoginScreen extends State<login> {
                   textAlign: TextAlign.center,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(fontSize: 15),
+                  
                 ),
               )
           ],
