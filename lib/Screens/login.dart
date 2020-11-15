@@ -10,6 +10,7 @@ class loginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -49,63 +50,62 @@ class LoginScreen extends State<login> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Positioned(
-            top: 10,
-            left: -10,
-            child: Image.asset("lib/Screens/assets/logo.gif",
-                width: size.width * 1),
-          ),
-            new Container(
-                padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
-                width: 150.0,
-                child: TextFormField(
-                  decoration: new InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 1, color: Colors.deepOrange),
-                    ),
-                    border: const OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.orange, width: 2.0),
-                    ),
-                    hintText: 'Enter your email ID',
-                    prefixIcon: Icon(Icons.email),
-                    labelText: 'Email',
-                    contentPadding:
-                        new EdgeInsets.fromLTRB(20.0, -10.0, 20.0, 10.0),
-                  ),
-                  validator: (input) =>
-                      input.isEmpty ? 'You must enter an email' : null,
-                ),
+              top: 10,
+              left: -10,
+              child: Image.asset(
+                "lib/Screens/assets/logo.gif",
+                width: size.width * 0.5,
+                height: size.height * 0.45,
               ),
-            
+            ),
             new Container(
-                padding: EdgeInsets.all(10.0),
-                child: TextFormField(
-                  decoration: new InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderSide:
-                          BorderSide(width: 1, color: Colors.deepOrange),
-                    ),
-                    border: const OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.orange, width: 2.0),
-                    ),
-                    hintText: 'Enter your password here',
-                    prefixIcon: Icon(Icons.security),
-                    labelText: 'Password',
-                    contentPadding: new EdgeInsets.fromLTRB(
-                      20.0,
-                      10.0,
-                      20.0,
-                      10.0,
-                    ),
+              padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
+              width: 150.0,
+              child: TextFormField(
+                decoration: new InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 1, color: Colors.blue),
                   ),
-                  obscureText: true,
-                  validator: (input) =>
-                      input.isEmpty ? 'You must enter a password' : null,
+                  border: const OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Colors.blue, width: 2.0),
+                  ),
+                  hintText: 'Enter your email ID',
+                  prefixIcon: Icon(Icons.email),
+                  labelText: 'Email',
+                  contentPadding:
+                      new EdgeInsets.fromLTRB(20.0, -10.0, 20.0, 10.0),
                 ),
+                validator: (input) =>
+                    input.isEmpty ? 'You must enter an email' : null,
               ),
-              
+            ),
+            new Container(
+              padding: EdgeInsets.all(10.0),
+              child: TextFormField(
+                decoration: new InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(width: 1, color: Colors.blue),
+                  ),
+                  border: const OutlineInputBorder(
+                    borderSide:
+                        const BorderSide(color: Colors.blue, width: 2.0),
+                  ),
+                  hintText: 'Enter your password here',
+                  prefixIcon: Icon(Icons.security),
+                  labelText: 'Password',
+                  contentPadding: new EdgeInsets.fromLTRB(
+                    20.0,
+                    10.0,
+                    20.0,
+                    10.0,
+                  ),
+                ),
+                obscureText: true,
+                validator: (input) =>
+                    input.isEmpty ? 'You must enter a password' : null,
+              ),
+            ),
             new Container(
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.all(10.0),
@@ -121,33 +121,34 @@ class LoginScreen extends State<login> {
                   color: Colors.lightBlue[100]),
             ),
             new Container(
-                margin: EdgeInsets.only(top: 5, bottom: 10),
-                padding: EdgeInsets.all(10.0),
-                child: RaisedButton.icon(
-                    onPressed: () {},
+              margin: EdgeInsets.only(top: 5, bottom: 10),
+              padding: EdgeInsets.all(10.0),
+              child: RaisedButton.icon(
+                  onPressed: () {},
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(30.0))),
                   label: Text('Sign in with Google',
                       style: TextStyle(color: Colors.black, fontSize: 17)),
-                  icon: Icon(Icons.explore, color: Colors.black,),
+                  icon: Icon(
+                    Icons.explore,
+                    color: Colors.black,
+                  ),
                   padding: const EdgeInsets.all(13.0),
                   splashColor: Colors.lightBlue[100],
                   color: Colors.lightBlue[200]),
+            ),
+            new InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => registerscreen()));
+              },
+              child: Text(
+                'Create Account',
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(fontSize: 15),
               ),
-              new InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => registerscreen()));
-                },
-                child: Text(
-                  'Create Account',
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(fontSize: 15),
-                ),
-              )
+            )
           ],
         ),
       )),
