@@ -2199,7 +2199,7 @@ textarea:focus {
   display: none;
 }
 
-/* .inputfile {
+.inputfile {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -2223,7 +2223,7 @@ textarea:focus {
 }
 
 .inputfile + label {
-  cursor: pointer; /* "hand" cursor */
+  cursor: pointer; /* "hand" cursor
 
 input[type="text"],
 input[type="password"],
