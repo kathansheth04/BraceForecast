@@ -2222,12 +2222,12 @@ textarea:focus {
 .inputfile + label {
   cursor: pointer; /* "hand" cursor */
 
-input[type="text"],
+/* input[type="text"],
 input[type="password"],
 input[type="email"],
 select {
   height: 2.75em;
-}
+} */
 
 textarea {
   padding: 0.75em 1em;
