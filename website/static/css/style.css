@@ -2199,7 +2199,7 @@ textarea:focus {
   display: none;
 }
 
-.inputfile {
+/* .inputfile {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -2207,7 +2207,6 @@ textarea:focus {
   position: absolute;
   z-index: -1;
 }
-
 .inputfile + label {
   font-size: 1.25em;
   font-weight: 700;
@@ -2216,14 +2215,12 @@ textarea:focus {
   display: inline-block;
   padding: 0.5em;
 }
-
 .inputfile:focus + label,
 .inputfile + label:hover {
   background-color: #8adfb0;
 }
-
 .inputfile + label {
-  cursor: pointer; /* "hand" cursor
+  cursor: pointer; /* "hand" cursor */
 
 input[type="text"],
 input[type="password"],
