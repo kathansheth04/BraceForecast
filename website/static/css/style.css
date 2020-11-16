@@ -2199,36 +2199,6 @@ textarea:focus {
   display: none;
 }
 
-/* .inputfile {
-  width: 0.1px;
-  height: 0.1px;
-  opacity: 0;
-  overflow: hidden;
-  position: absolute;
-  z-index: -1;
-}
-.inputfile + label {
-  font-size: 1.25em;
-  font-weight: 700;
-  color: white;
-  background-color: #b3e5fc;
-  display: inline-block;
-  padding: 0.5em;
-}
-.inputfile:focus + label,
-.inputfile + label:hover {
-  background-color: #8adfb0;
-}
-.inputfile + label {
-  cursor: pointer; /* "hand" cursor */
-
-/* input[type="text"],
-input[type="password"],
-input[type="email"],
-select {
-  height: 2.75em;
-} */
-
 textarea {
   padding: 0.75em 1em;
 }
