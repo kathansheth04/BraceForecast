@@ -3309,8 +3309,8 @@ button:disabled,
 }
 
 #footer .copyright {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.8em;
+  color: #203891;
+  font-size: 1em;
   margin: 0 0 2em 0;
   padding: 0;
 }
