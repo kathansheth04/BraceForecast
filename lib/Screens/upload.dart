@@ -65,7 +65,6 @@ class _HomePageState extends State<uploads> {
 
   void _showPhotoLibrary(String email) async {
     final file = await ImagePicker.pickImage(source: ImageSource.gallery);
-
     setState(() {
       _path = file.path;
     });
