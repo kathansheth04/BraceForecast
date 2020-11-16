@@ -1,9 +1,10 @@
-import 'package:defhacks/Screens/dashboard.dart';
+import 'package:defhacks/Screens/Landing/background.dart';
 import 'package:defhacks/Screens/register.dart';
 import 'package:defhacks/Screens/upload.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:defhacks/Screens/Landing/background.dart';
 
 void main() {
   runApp(loginScreen());
@@ -66,7 +67,7 @@ class LoginScreen extends State<login> {
 
     print("Signed in user");
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Dashboard()));
+        context, MaterialPageRoute(builder: (context) => uploadScreen()));
     return user;
   }
 
@@ -85,7 +86,7 @@ class LoginScreen extends State<login> {
         (await _auth.signInWithCredential(credential)).user;
     print("signed in ");
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => Dashboard()));
+        context, MaterialPageRoute(builder: (context) => uploadScreen()));
     return user;
   }
 
@@ -99,12 +100,11 @@ class LoginScreen extends State<login> {
           children: [
             Positioned(
             top: 10,
-            left: -10,
             child: Image.asset("lib/Screens/assets/smallLogo.gif",
                 width: size.width * 1),
             ),
             new Container(
-              padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
+              margin: EdgeInsets.only(bottom: 0, left: 10, right: 10),
               width: 150.0,
               child: TextFormField(
                 controller: _emailController,

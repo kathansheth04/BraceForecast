@@ -1,72 +1,35 @@
 import 'dart:io';
 import 'package:defhacks/Screens/login.dart';
-import 'package:defhacks/Screens/yesBraces.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:defhacks/Screens/upload.dart';
 
-class uploadScreen extends StatefulWidget {
+class yesBracesScreen extends StatefulWidget {
   @override 
-  _HomePageState createState() => _HomePageState(); 
+  yesBraces createState() => yesBraces(); 
 }
 
-class _HomePageState extends State<uploadScreen> {
+class yesBraces extends State<yesBracesScreen> {
 
   String _path;
   noSuchMethod(Invocation i) => super.noSuchMethod(i);
-
-  void _showPhotoLibrary() async {
-    final file = await ImagePicker.pickImage(source: ImageSource.gallery);
-
-    setState(() {
-      _path = file.path; 
-    });
-
-  }
-
-  void _showOptions(BuildContext context) {
-    
-    showModalBottomSheet(
-      context: context,
-      builder: (context) {
-        return Container(
-          height: 150,
-          child: Column(children: <Widget>[
-            ListTile(
-              onTap: () {
-                Navigator.pop(context); 
-                _showPhotoLibrary(); 
-              },
-              leading: Icon(Icons.photo_library),
-              title: Text("Choose from photo library")
-            ),
-            ListTile(
-              onTap: () => Navigator.of(context).pop(),
-              leading: Icon(Icons.cancel),
-              title: Text("Cancel")
-            ), 
-          ])
-        );
-      }
-    );
-
-  }
 
     int _selectedIndex = 0;
     static const TextStyle optionStyle =
         TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
     static const List<Widget> _widgetOptions = <Widget>[
       Text(
-        'Index 0: Upload Image',
+        'Index 0: Main',
         style: optionStyle,
       ),
       Text(
-        'Index 1: Find Clinics',
+        'Index 1: Chart',
         style: optionStyle,
       ),
     ];
 
-    void _onItemTapped(int index) {
+  void _onItemTapped(int index) {
     setState(() {
       if (index == 0) {
         _selectedIndex = 0;
@@ -86,7 +49,7 @@ class _HomePageState extends State<uploadScreen> {
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        title: Text('Brace Yourself'),
+        title: Text('Results'),
         actions: [
           Padding(
               padding: EdgeInsets.only(right: 20.0),
@@ -165,9 +128,7 @@ class _HomePageState extends State<uploadScreen> {
                   width: 400,
                   padding: EdgeInsets.all(10.0),
                   child: RaisedButton.icon(
-                      onPressed: () {
-                        _showOptions(context);
-                      },
+                      onPressed: () {},
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(30.0))),
                       label: Text('Upload Image',

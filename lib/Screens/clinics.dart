@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'package:defhacks/Screens/login.dart';
+import 'package:defhacks/Screens/upload.dart';
+import 'package:defhacks/Screens/yesBraces.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:defhacks/Screens/clinics.dart';
-import 'package:defhacks/Screens/dashboard.dart';
 import 'package:flutter/services.dart';
 import 'login.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -86,11 +87,11 @@ class _MyHomePageState extends State<clinics> {
       if (index == 0) {
         _selectedIndex = 0;
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Dashboard()));
+            context, MaterialPageRoute(builder: (context) => uploadScreen()));
       } else {
         _selectedIndex = 1;
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Clinics()));
+            context, MaterialPageRoute(builder: (context) => yesBracesScreen()));
       }
     });
   }
