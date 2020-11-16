@@ -73,14 +73,14 @@ class _HomePageState extends State<uploads> {
 
   void predictionAction() async {
     final response = await http
-        .get("http://10.0.0.65:5000/", headers: {"Accept": "application/json"});
-    final decoded = json.decode(response.body) as Map<String, dynamic>;
-    if (decoded["outputs"].toString() == "1") {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => noBracesScreen()));
-    } else {
+        .get("http://10.0.0.65:5000", headers: {"Accept": "application/json"});
+    var decoded = json.decode(response.body);
+    if (decoded[0] == "1") {
       Navigator.push(
           context, MaterialPageRoute(builder: (context) => yesBracesScreen()));
+    } else {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => noBracesScreen()));
     }
   }
 
@@ -265,7 +265,7 @@ class _HomePageState extends State<uploads> {
                     padding: EdgeInsets.all(10.0),
                     child: RaisedButton.icon(
                         onPressed: () {
-                          predictionAction();
+                          this.predictionAction();
                         },
                         shape: RoundedRectangleBorder(
                             borderRadius:
