@@ -1,4 +1,4 @@
-# Brace Forcast
+# Brace Forecast
 
 ## Introduction
 
