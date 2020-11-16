@@ -1,16 +1,18 @@
 import 'dart:io';
+import 'package:defhacks/Screens/clinics.dart';
 import 'package:defhacks/Screens/login.dart';
+import 'package:defhacks/Screens/yesBraces.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:defhacks/Screens/upload.dart';
 
-class yesBracesScreen extends StatefulWidget {
+class noBracesScreen extends StatefulWidget {
   @override 
-  yesBraces createState() => yesBraces(); 
+  noBraces createState() => noBraces(); 
 }
 
-class yesBraces extends State<yesBracesScreen> {
+class noBraces extends State<noBracesScreen> {
 
   String _path;
   noSuchMethod(Invocation i) => super.noSuchMethod(i);
@@ -38,7 +40,7 @@ class yesBraces extends State<yesBracesScreen> {
       } else {
         _selectedIndex = 1;
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => yesBracesScreen()));
+            context, MaterialPageRoute(builder: (context) => Clinics()));
       }
     });
   }
@@ -87,7 +89,7 @@ class yesBraces extends State<yesBracesScreen> {
                 child: RichText(
                   textAlign: TextAlign.center,
                   text: TextSpan(
-                    text: 'The result was: \n You need braces!',
+                    text: 'The result was: \n You don\'t need braces!',
                     style: TextStyle(color: Colors.black, fontSize: 17),
                   ),
                 ),
@@ -106,7 +108,7 @@ class yesBraces extends State<yesBracesScreen> {
                         ListTile(
                           title: new Center(
                             child: Text(
-                              "Tips for what to do:",
+                              "Tips for how to preserve good oral hygiene:",
                               style: TextStyle(color: Colors.black),
                             ),
                           ),
@@ -115,7 +117,7 @@ class yesBraces extends State<yesBracesScreen> {
                       new Container(
                         padding: EdgeInsets.fromLTRB(20, 0, 20, 30),
                         child: Text(
-                          "Getting professional help: \n 1) Visit our clinics page through the button below",
+                          "General tips:: \n 1) Do xyz",
                           style: 
                             TextStyle(color: Colors.black, fontSize: 15, height: 1.3)),
                           
