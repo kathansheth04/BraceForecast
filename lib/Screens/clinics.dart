@@ -111,9 +111,9 @@ class _MyHomePageState extends State<clinics> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
-        backgroundColor: Color(0xFF81D4FA),
-        title: Text('Clinics Near You'),
+        title: Text('Clinics'),
         actions: [
           Padding(
               padding: EdgeInsets.only(right: 20.0),
@@ -131,7 +131,9 @@ class _MyHomePageState extends State<clinics> {
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.apps), label: "Main"),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.apps), 
+            label: "Upload Image"),
           BottomNavigationBarItem(
             icon: Icon(Icons.table_chart),
             label: "Clinics",
@@ -149,20 +151,31 @@ class _MyHomePageState extends State<clinics> {
             padding: EdgeInsets.fromLTRB(65, 65, 65, 65),
             child: new Column(
               children: [
+                Container(
+                padding: EdgeInsets.only(top: 0, left: 0, right: 0, bottom: 30),
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      text: 'Check out these clinics for getting professional help!',
+                      style: TextStyle(color: Colors.black, fontSize: 20),
+                    ),
+                  ),
+                ),
                 Card(
                     clipBehavior: Clip.antiAlias,
-                    color: Color(0xFF81D4FA),
+                    color: Colors.blue[100],
                     shadowColor: Colors.black,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
                     child: Column(children: [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                        padding: EdgeInsets.fromLTRB(20, 0, 20, 5),
                         child: ListTile(
                           title: new Center(
                             child: Text(
                               "Milpitas Dental Center",
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.black),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ),
@@ -190,7 +203,7 @@ class _MyHomePageState extends State<clinics> {
                 Card(
                     margin: new EdgeInsets.symmetric(vertical: 20),
                     clipBehavior: Clip.antiAlias,
-                    color: Color(0xFF81D4FA),
+                    color: Colors.blue[100],
                     shadowColor: Colors.black,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
@@ -201,7 +214,7 @@ class _MyHomePageState extends State<clinics> {
                           title: new Center(
                             child: Text(
                               "Milpitas Town Center Dental Care",
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.black),
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -229,7 +242,7 @@ class _MyHomePageState extends State<clinics> {
                     ])),
                 Card(
                     clipBehavior: Clip.antiAlias,
-                    color: Color(0xFF81D4FA),
+                    color: Colors.blue[100],
                     shadowColor: Colors.black,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
@@ -240,7 +253,8 @@ class _MyHomePageState extends State<clinics> {
                           title: new Center(
                             child: Text(
                               "Brilliance Dental Care",
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.black),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ),
@@ -268,7 +282,7 @@ class _MyHomePageState extends State<clinics> {
                 Card(
                     margin: new EdgeInsets.symmetric(vertical: 20),
                     clipBehavior: Clip.antiAlias,
-                    color: Color(0xFF81D4FA),
+                    color: Colors.blue[100],
                     shadowColor: Colors.black,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
@@ -279,7 +293,8 @@ class _MyHomePageState extends State<clinics> {
                           title: new Center(
                             child: Text(
                               "City Square Dental Care",
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.black),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ),
@@ -306,7 +321,7 @@ class _MyHomePageState extends State<clinics> {
                     ])),
                 Card(
                     clipBehavior: Clip.antiAlias,
-                    color: Color(0xFF81D4FA),
+                    color: Colors.blue[100],
                     shadowColor: Colors.black,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20.0)),
@@ -317,7 +332,8 @@ class _MyHomePageState extends State<clinics> {
                           title: new Center(
                             child: Text(
                               "E Dental Care",
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(color: Colors.black),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         ),

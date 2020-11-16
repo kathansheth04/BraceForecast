@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:defhacks/Screens/clinics.dart';
 import 'package:defhacks/Screens/login.dart';
 import 'package:defhacks/Screens/yesBraces.dart';
+import 'package:defhacks/Screens/noBraces.dart';
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/files.dart';
 import 'package:gallery_saver/gallery_saver.dart';
@@ -133,28 +134,28 @@ class _HomePageState extends State<uploads> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomPadding: false,
-        appBar: AppBar(
-          backgroundColor: Color(0xFF81D4FA),
-          title: Text('Brace Yourself'),
-          actions: [
-            Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: GestureDetector(
-                    onTap: () async {
-                      await FirebaseAuth.instance.signOut().then((value) =>
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => loginScreen())));
-                    },
-                    child: Icon(Icons.portrait_rounded)))
-          ],
-        ),
+      resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        title: Text('Brace yourself'),
+        actions: [
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                  onTap: () async {
+                    await FirebaseAuth.instance.signOut().then((value) =>
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => loginScreen())));
+                  },
+                  child: Icon(Icons.portrait_rounded)))
+        ],
+      ),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(Icons.apps), title: Text('Main')),
+                icon: Icon(Icons.apps), 
+                title: Text('Upload Images')),
             BottomNavigationBarItem(
               icon: Icon(Icons.table_chart),
               title: Text('Clinics'),
@@ -240,7 +241,7 @@ class _HomePageState extends State<uploads> {
                     child: ListTile(
                       title: new Center(
                         child: Text(
-                          "Oral Hygiene Tips",
+                          "How does this work?",
                           style: TextStyle(color: Colors.black),
                         ),
                       ),
@@ -249,13 +250,7 @@ class _HomePageState extends State<uploads> {
                   new Container(
                       padding: EdgeInsets.fromLTRB(20, 0, 20, 30),
                       child: Text(
-                          "Brushing: \n 1) Brush your teeth for two minutes \n 2) Try to keep your brush separate from other toothbrushes in the same holder to prevent cross-contamination \n 3) Invest in a new toothbrush every three months",
-                          style: TextStyle(
-                              color: Colors.black, fontSize: 15, height: 1.3))),
-                  new Container(
-                      padding: EdgeInsets.fromLTRB(20, 0, 20, 30),
-                      child: Text(
-                          "Flossing: \n 1) Don't snap the floss into your gums. When the floss reaches your gum line, curve it against one tooth, making a c shape. \n 2) Use the floss to gently rub the side of the tooth in an up-and-down motion \n 3)  If you find it hard to handle the floss, try using a water flosser.",
+                          "You might be wondering what actually happens once you upload an image, here's how it works. By implementing a sequential neural network, our algorithm will analyze your uploaded image and compare it with sample data that we have trained our model on. This sample data is a database of pictures including cases of people who require braces as well as people who do not require braces. In addition, the images that previous users have uploaded to the app are added into the sample data so the model is continuously being trained and becoming more accurate. Using this data, we are able to compare similarities in tooth formation, thus classifying your teeth as either requiring braces or not. If you are already using treatment or braces, you can continuously be checking your progress within the app to see how close your teeth are to good formation!",
                           style: TextStyle(
                               color: Colors.black, fontSize: 15, height: 1.3))),
                   new Container(
@@ -263,9 +258,8 @@ class _HomePageState extends State<uploads> {
                     width: 400,
                     padding: EdgeInsets.all(10.0),
                     child: RaisedButton.icon(
-                        onPressed: () {
-                          predictionAction();
-                        },
+                        onPressed: () {Navigator.push(
+                          context,MaterialPageRoute(builder: (context) => yesBracesScreen()));},
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(30.0))),

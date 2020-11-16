@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:defhacks/Screens/login.dart';
+import 'package:defhacks/Screens/clinics.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -38,7 +39,7 @@ class yesBraces extends State<yesBracesScreen> {
       } else {
         _selectedIndex = 1;
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => yesBracesScreen()));
+            context, MaterialPageRoute(builder: (context) => Clinics()));
       }
     });
   }
@@ -88,7 +89,7 @@ class yesBraces extends State<yesBracesScreen> {
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     text: 'The result was: \n You need braces!',
-                    style: TextStyle(color: Colors.black, fontSize: 17),
+                    style: TextStyle(color: Colors.black, fontSize: 27),
                   ),
                 ),
               ),
@@ -106,7 +107,7 @@ class yesBraces extends State<yesBracesScreen> {
                         ListTile(
                           title: new Center(
                             child: Text(
-                              "Tips for what to do:",
+                              "Not comfortable with getting braces?",
                               style: TextStyle(color: Colors.black),
                             ),
                           ),
@@ -115,7 +116,7 @@ class yesBraces extends State<yesBracesScreen> {
                       new Container(
                         padding: EdgeInsets.fromLTRB(20, 0, 20, 30),
                         child: Text(
-                          "Getting professional help: \n 1) Visit our clinics page through the button below",
+                          "Here's some other products you can try out: \n 1) Invisalign: A clear retainer that is good for being able to straighten teeth but can also be easily removing for eating, drinking, socializing or other needs (Needs to be replaced every 2 weeks or so) \n 2) Inman Aligner: Also a nearly invisible method of treatment but is much faster in producing results. Results are possible in as little as 6 weeks \n 3) Try using headgear or Dental Veneers as alternatives to braces if you don't feel comfortable with the way braces feel in your mouth",
                           style: 
                             TextStyle(color: Colors.black, fontSize: 15, height: 1.3)),
                           
@@ -123,21 +124,50 @@ class yesBraces extends State<yesBracesScreen> {
                     ]
                   )
                 ),
-              new Container(
-                  margin: EdgeInsets.only(top: 5),
-                  width: 400,
-                  padding: EdgeInsets.all(10.0),
-                  child: RaisedButton.icon(
-                      onPressed: () {},
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30.0))),
-                      label: Text('Upload Image',
-                          style: TextStyle(color: Colors.black, fontSize: 17)),
-                      icon: Icon(Icons.camera, color: Colors.black),
-                      padding: const EdgeInsets.all(13.0),
-                      splashColor: Colors.lightBlue[200],
-                      color: Colors.lightBlue[100]),
-                ),
+              Card(
+                margin:
+                    EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 10),
+                clipBehavior: Clip.antiAlias,
+                color: Colors.blue[100],
+                shadowColor: Colors.black,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20.0)),
+                child: Column(children: [
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                    child: ListTile(
+                      title: new Center(
+                        child: Text(
+                          "How should I go about getting braces?",
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      ),
+                    ),
+                  ),
+                  new Container(
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 30),
+                      child: Text(
+                          "If you require braces, you will need to do so through professional help. Within this application, we have provided several clinics near you to get this professional help and your teeth fixed up as soon as possible. In order to navigate to this resource, please click the button below titled, \"Navigate to the Clinics\"",
+                          style: TextStyle(
+                            color: Colors.black, fontSize: 15, height: 1.3))
+                      ),
+                    new Container(
+                    margin: EdgeInsets.only(top: 5),
+                    width: 400,
+                    padding: EdgeInsets.all(10.0),
+                    child: RaisedButton.icon(
+                        onPressed: () {Navigator.push(
+                          context,MaterialPageRoute(builder: (context) => Clinics()));},
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(30.0))),
+                        label: Text('Navigate to the Clinics',
+                            style: TextStyle(color: Colors.black, fontSize: 17)),
+                        icon: Icon(Icons.camera, color: Colors.black),
+                        padding: const EdgeInsets.all(13.0),
+                        splashColor: Colors.lightBlue[200],
+                        color: Colors.lightBlue[100]),
+                  ),
+                ])),
               ]
             ),
           )

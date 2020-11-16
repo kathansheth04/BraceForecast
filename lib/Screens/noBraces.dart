@@ -90,7 +90,7 @@ class noBraces extends State<noBracesScreen> {
                   textAlign: TextAlign.center,
                   text: TextSpan(
                     text: 'The result was: \n You don\'t need braces!',
-                    style: TextStyle(color: Colors.black, fontSize: 17),
+                    style: TextStyle(color: Colors.black, fontSize: 27),
                   ),
                 ),
               ),
@@ -108,7 +108,7 @@ class noBraces extends State<noBracesScreen> {
                         ListTile(
                           title: new Center(
                             child: Text(
-                              "Tips for how to preserve good oral hygiene:",
+                              "Good oral hygiene preservation:",
                               style: TextStyle(color: Colors.black),
                             ),
                           ),
@@ -117,11 +117,17 @@ class noBraces extends State<noBracesScreen> {
                       new Container(
                         padding: EdgeInsets.fromLTRB(20, 0, 20, 30),
                         child: Text(
-                          "General tips:: \n 1) Do xyz",
+                          "Brushing: \n 1) Brushing: Practice good technique \n 2) Brush your teeth for two minutes \n 3) Keep your equipment clean \n 4) Try to keep it separate from other toothbrushes in the same holder to prevent cross-contamination \n 5) Invest in a new toothbrush every three months",
                           style: 
-                            TextStyle(color: Colors.black, fontSize: 15, height: 1.3)),
-                          
-                      )
+                            TextStyle(color: Colors.black, fontSize: 15, height: 1.3)),    
+                      ),
+                      new Container(
+                      padding: EdgeInsets.fromLTRB(20, 0, 20, 30),
+                      child: Text(
+                          "Flossing: \n 1) Don't snap the floss into your gums. When the floss reaches your gum line, curve it against one tooth, making a c shape. \n 2) Use the floss to gently rub the side of the tooth in an up-and-down motion \n 3)  If you find it hard to handle the floss, try using a water flosser.",
+                          style: TextStyle(
+                              color: Colors.black, fontSize: 15, height: 1.3))
+                      ),
                     ]
                   )
                 ),
@@ -133,7 +139,7 @@ class noBraces extends State<noBracesScreen> {
                       onPressed: () {},
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(30.0))),
-                      label: Text('Upload Image',
+                      label: Text('Learn more about the issue',
                           style: TextStyle(color: Colors.black, fontSize: 17)),
                       icon: Icon(Icons.camera, color: Colors.black),
                       padding: const EdgeInsets.all(13.0),
