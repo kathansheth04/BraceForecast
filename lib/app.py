@@ -14,7 +14,7 @@ from sklearn.metrics import classification_report
 import matplotlib.pyplot as plt
 import argparse
 import sys
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify
 
 app = Flask(__name__)
 
@@ -23,8 +23,8 @@ app.config["IMAGE_UPLOADS"] = "/home/kathansheth/defhacks/lib/Screens/sampdata"
 name_array = []
 email_array = []
 address_array = []
-
-@app.route("/", methods=["GET", "POST"])
+headers: {"Content-Type": "application/json"}
+@app.route("/", methods=["POST", "REST", "GET"])
 def upload_image():
     
     print("[INFO] loading model...")
@@ -61,11 +61,11 @@ def upload_image():
 
         if label == "Non-Brace":
             text = "Non-Brace"
-            return "1";
+            return jsonify("0")
 
         else:
             text = "Brace"
-            return "0";
+            return jsonify("1")
 
                 
 

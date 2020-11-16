@@ -1,13 +1,16 @@
+import 'dart:convert';
 import 'dart:io';
 import 'package:defhacks/Screens/clinics.dart';
 import 'package:defhacks/Screens/dashboard.dart';
 import 'package:defhacks/Screens/login.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery_saver/files.dart';
+import 'package:gallery_saver/gallery_saver.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'dart:io' show Platform, stdout;
 import 'package:path_provider/path_provider.dart';
-import 'package:http/http.dart' show get;
+import 'package:http/http.dart' as http;
 
 class uploadScreen extends StatefulWidget {
   @override
@@ -29,8 +32,14 @@ class _HomePageState extends State<uploadScreen> {
     setState(() {
       _path = file.path;
     });
-    Directory appDir = await getApplicationDocumentsDirectory();
-    print(appDir.path);
+  }
+
+  void predictionAction() async {
+    var uri = http.get(http.get("http://127.0.0.1:5000/"));
+    var bodyEncoded = json.encode("http://127.0.0.1:5000/");
+    var response = await http.post("http://127.0.0.1:5000/",
+        body: bodyEncoded, headers: {"Content-Type": "application/json"});
+    print(response);
   }
 
   void _showOptions(BuildContext context) {
@@ -217,7 +226,9 @@ class _HomePageState extends State<uploadScreen> {
                     width: 400,
                     padding: EdgeInsets.all(10.0),
                     child: RaisedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          predictionAction();
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(30.0))),

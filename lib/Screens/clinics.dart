@@ -7,6 +7,7 @@ import 'package:defhacks/Screens/upload.dart';
 import 'package:flutter/services.dart';
 import 'login.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(Clinics());
@@ -95,8 +96,9 @@ class _MyHomePageState extends State<clinics> {
     });
   }
 
-  _launchURL(String uri) async {
-    String url = 'https://maps.google.com/' + uri.toString();
+  void _launchURL(String uri) async {
+    String url = ("https://www.google.com/maps/search/" + uri) + "/";
+    print(url);
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -176,7 +178,7 @@ class _MyHomePageState extends State<clinics> {
                           FlatButton(
                             color: new Color(0x000000),
                             onPressed: () {
-                              // Perform some action
+                              launch("tel://(408)263-6464");
                             },
                             child: const Icon(Icons.phone),
                           ),
@@ -209,14 +211,14 @@ class _MyHomePageState extends State<clinics> {
                           FlatButton(
                             color: new Color(0x000000),
                             onPressed: () {
-                              // Perform some action
+                              _launchURL("491+E+Calaveras+Blvd");
                             },
                             child: new Icon(Icons.room),
                           ),
                           FlatButton(
                             color: new Color(0x000000),
                             onPressed: () {
-                              // Perform some action
+                              launch("tel://(408)262-6608");
                             },
                             child: const Icon(Icons.phone),
                           ),
@@ -247,14 +249,14 @@ class _MyHomePageState extends State<clinics> {
                           FlatButton(
                             color: new Color(0x000000),
                             onPressed: () {
-                              // Perform some action
+                              _launchURL("52+Skytop+St+suite+40");
                             },
                             child: new Icon(Icons.room),
                           ),
                           FlatButton(
                             color: new Color(0x000000),
                             onPressed: () {
-                              // Perform some action
+                              launch("tel://(408)755-9800");
                             },
                             child: const Icon(Icons.phone),
                           ),
@@ -286,14 +288,14 @@ class _MyHomePageState extends State<clinics> {
                           FlatButton(
                             color: new Color(0x000000),
                             onPressed: () {
-                              // Perform some action
+                              _launchURL("1780+N+Milpitas+Blvd");
                             },
                             child: new Icon(Icons.room),
                           ),
                           FlatButton(
                             color: new Color(0x000000),
                             onPressed: () {
-                              // Perform some action
+                              launch("tel://(408)946-9234");
                             },
                             child: const Icon(Icons.phone),
                           ),
@@ -324,14 +326,14 @@ class _MyHomePageState extends State<clinics> {
                           FlatButton(
                             color: new Color(0x000000),
                             onPressed: () {
-                              // Perform some action
+                              _launchURL("1156+Jacklin+Rd");
                             },
                             child: new Icon(Icons.room),
                           ),
                           FlatButton(
                             color: new Color(0x000000),
                             onPressed: () {
-                              // Perform some action
+                              launch("tel://(408)719-8295");
                             },
                             child: const Icon(Icons.phone),
                           ),
