@@ -27,7 +27,7 @@ There are hundreds of thousands of patients misdiagnosed for needing braces by c
 
 ## Link to Video
 
-
+https://www.youtube.com/watch?time_continue=103&v=5LiK_92LOxc&feature=emb_title
 
 ## Contributors
 
