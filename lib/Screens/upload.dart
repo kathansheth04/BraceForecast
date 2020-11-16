@@ -1,10 +1,9 @@
-
 import 'dart:io';
-
 import 'package:defhacks/Screens/dashboard.dart';
 import 'package:defhacks/Screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class uploadScreen extends StatefulWidget {
   @override 
@@ -72,7 +71,7 @@ class _HomePageState extends State<uploadScreen> {
       if (index == 0) {
         _selectedIndex = 0;
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            context, MaterialPageRoute(builder: (context) => Dashboard()));
       } else {
         _selectedIndex = 1;
         // Navigator.push(
@@ -86,6 +85,22 @@ class _HomePageState extends State<uploadScreen> {
 
     return Scaffold(
       resizeToAvoidBottomPadding: false,
+      appBar: AppBar(
+        title: Text('Brace Yourself'),
+        actions: [
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                  onTap: () async {
+                    await FirebaseAuth.instance.signOut().then((value) =>
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => loginScreen())));
+                  },
+                  child: Icon(Icons.portrait_rounded)))
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -104,6 +119,16 @@ class _HomePageState extends State<uploadScreen> {
           child: Column(children: <Widget>[
             _path == null ? Image.asset("images/place-holder.png") : 
             Image.file(File(_path)),
+            Container(
+              padding: EdgeInsets.only(top: 30, left: 20, right: 20, bottom: 0),
+                child: RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    text: 'Do you need braces? Let\'s take a look!',
+                    style: TextStyle(color: Colors.black, fontSize: 17),
+                  ),
+                ),
+              ),
             Card(
                 margin: EdgeInsets.only(top: 50, left: 10, right: 10, bottom: 10),
                 clipBehavior: Clip.antiAlias,

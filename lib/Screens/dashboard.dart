@@ -2,17 +2,21 @@ import 'dart:async';
 import 'package:defhacks/Screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:defhacks/Screens/clinics.dart';
+import 'package:defhacks/Screens/upload.dart';
+import 'login.dart';
 
 void main() {
-  runApp(HomeScreen());
+  runApp(Dashboard());
 }
 
-class HomeScreen extends StatelessWidget {
+class Dashboard extends StatelessWidget {
   // This widget is the root of your application.
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -28,15 +32,16 @@ class HomeScreen extends StatelessWidget {
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
+
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: dashboard(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class dashboard extends StatefulWidget {
+  dashboard({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -53,7 +58,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<dashboard> {
   @override
   void initState() {
     super.initState();
@@ -79,11 +84,11 @@ class _MyHomePageState extends State<MyHomePage> {
       if (index == 0) {
         _selectedIndex = 0;
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            context, MaterialPageRoute(builder: (context) => Dashboard()));
       } else {
         _selectedIndex = 1;
-        // Navigator.push(
-        //     context, MaterialPageRoute(builder: (context) => Stats()));
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => Clinics()));
       }
     });
   }
@@ -91,36 +96,37 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      appBar: AppBar(
+        title: Text('Brace Yourself'),
+        actions: [
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                  onTap: () async {
+                    await FirebaseAuth.instance.signOut().then((value) =>
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => loginScreen())));
+                  },
+                  child: Icon(Icons.portrait_rounded)))
+        ],
+      ),
+      backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.apps),
-            title: Text('Main')),
+          BottomNavigationBarItem(icon: Icon(Icons.apps), label: "Main"),
           BottomNavigationBarItem(
             icon: Icon(Icons.table_chart),
-            title: Text('Chart'),
+            label: "Clinics",
           )
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blueAccent,
         onTap: _onItemTapped,
       ),
       body: Container(
           child: new Stack(
-        children: [
-          new Container(
-            height: 200,
-            width: double.infinity,
-            padding: const EdgeInsets.all(12),
-            child: Align(
-                alignment: Alignment.center,
-                child: RaisedButton.icon(
-                    onPressed: () {},
-                    icon: Icon(Icons.security),
-                    label: Text('click here'))),
-          )
-        ],
+        children: [],
       )),
     );
   }
