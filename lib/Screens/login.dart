@@ -150,7 +150,6 @@ class LoginScreen extends State<login> {
                     input.isEmpty ? 'You must enter a password' : null,
               ),
             ),
-            
             new Container(
               margin: EdgeInsets.only(top: 5),
               padding: EdgeInsets.all(10.0),

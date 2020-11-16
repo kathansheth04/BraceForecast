@@ -13,7 +13,7 @@ from tensorflow.keras.utils import to_categorical
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 from pyimagesearch.learningratefinder import LearningRateFinder
-from pyimagesearch.firedetectionnet import FireDetectionNet
+from pyimagesearch.detectionnet import DetectionNet
 from pyimagesearch import config
 from imutils import paths
 import matplotlib.pyplot as plt
@@ -95,7 +95,7 @@ aug = ImageDataGenerator(
 print("[INFO] compiling model...")
 opt = SGD(lr=config.INIT_LR, momentum=0.9,
 	decay=config.INIT_LR / config.NUM_EPOCHS)
-model = FireDetectionNet.build(width=128, height=128, depth=3,
+model = DetectionNet.build(width=128, height=128, depth=3,
 	classes=2)
 model.compile(loss="binary_crossentropy", optimizer=opt,
 	metrics=["accuracy"])
@@ -148,25 +148,3 @@ print(classification_report(testY.argmax(axis=1),
 # serialize the model to disk
 print("[INFO] serializing network to '{}'...".format(config.MODEL_PATH))
 model.save(config.MODEL_PATH)
-
-
-
-
-
-
-
-
-
-# construct a plot that plots and saves the training history
-N = np.arange(0, config.NUM_EPOCHS)
-plt.style.use("ggplot")
-plt.figure()
-plt.plot(N, H.history["loss"], label="Train_loss")
-plt.plot(N, H.history["val_loss"], label="Val_loss")
-plt.plot(N, H.history["accuracy"], label="Train_acc")
-plt.plot(N, H.history["val_accuracy"], label="Val_acc")
-plt.title("Training Loss and Accuracy")
-plt.xlabel("Epoch #")
-plt.ylabel("Loss/Accuracy")
-plt.legend(loc="lower left")
-plt.savefig(config.TRAINING_PLOT_PATH)

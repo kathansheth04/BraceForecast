@@ -46,8 +46,7 @@ def send():
         email = req.get("email")
         email_array.append(email)
         email_array[0] = email
-
-
+        
         address = req.get("address")
         address_array.append(address)
         address_array[0] = address
@@ -71,10 +70,10 @@ def upload_image():
 
             print(image)
 
-            # return redirect(request.url)
+            return redirect(request.url)
     
     print("[INFO] loading model...")
-    model = load_model(os.path.sep.join(["output", "fire_detection.keras"]))
+    model = load_model(os.path.sep.join(["output", "detection.keras"]))
 
     print("[INFO] predicting...")
     bracePaths = list(paths.list_images("yesBrace"))
