@@ -85,6 +85,7 @@ class RegisterScreen extends State<register> {
             new Container(
               padding: EdgeInsets.all(10.0),
               child: TextFormField(
+                controller: _emailController,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(width: 1, color: Colors.lightBlue),
@@ -136,6 +137,7 @@ class RegisterScreen extends State<register> {
             new Container(
               padding: EdgeInsets.all(10.0),
               child: TextFormField(
+                controller: _passwordController,
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(width: 1, color: Colors.lightBlue),

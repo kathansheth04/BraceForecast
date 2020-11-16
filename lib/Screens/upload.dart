@@ -72,11 +72,16 @@ class _HomePageState extends State<uploads> {
   }
 
   void predictionAction() async {
-    var uri = http.get(http.get("http://127.0.0.1:5000/"));
-    var bodyEncoded = json.encode("http://127.0.0.1:5000/");
-    var response = await http.post("http://127.0.0.1:5000/",
-        body: bodyEncoded, headers: {"Content-Type": "application/json"});
-    print(response);
+    final response = await http
+        .get("http://10.0.0.65:5000/", headers: {"Accept": "application/json"});
+    final decoded = json.decode(response.body) as Map<String, dynamic>;
+    if (decoded["outputs"].toString() == "1") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => noBracesScreen()));
+    } else {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => yesBracesScreen()));
+    }
   }
 
   void _showOptions(BuildContext context) {
@@ -129,33 +134,34 @@ class _HomePageState extends State<uploads> {
     });
   }
 
-  void checkReport() {}
+  void checkReport() {
+    predictionAction();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      appBar: AppBar(
-        title: Text('Brace yourself'),
-        actions: [
-          Padding(
-              padding: EdgeInsets.only(right: 20.0),
-              child: GestureDetector(
-                  onTap: () async {
-                    await FirebaseAuth.instance.signOut().then((value) =>
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => loginScreen())));
-                  },
-                  child: Icon(Icons.portrait_rounded)))
-        ],
-      ),
+        resizeToAvoidBottomPadding: false,
+        appBar: AppBar(
+          title: Text('Brace yourself'),
+          actions: [
+            Padding(
+                padding: EdgeInsets.only(right: 20.0),
+                child: GestureDetector(
+                    onTap: () async {
+                      await FirebaseAuth.instance.signOut().then((value) =>
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => loginScreen())));
+                    },
+                    child: Icon(Icons.portrait_rounded)))
+          ],
+        ),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(Icons.apps), 
-                title: Text('Upload Images')),
+                icon: Icon(Icons.apps), title: Text('Upload Images')),
             BottomNavigationBarItem(
               icon: Icon(Icons.table_chart),
               title: Text('Clinics'),
@@ -258,8 +264,9 @@ class _HomePageState extends State<uploads> {
                     width: 400,
                     padding: EdgeInsets.all(10.0),
                     child: RaisedButton.icon(
-                        onPressed: () {Navigator.push(
-                          context,MaterialPageRoute(builder: (context) => yesBracesScreen()));},
+                        onPressed: () {
+                          predictionAction();
+                        },
                         shape: RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(30.0))),
