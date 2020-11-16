@@ -64,6 +64,7 @@ flutter:
     - lib/Screens/assets/main_top.png
     - lib/Screens/assets/main_bottom.png
     - lib/Screens/assets/main_topright.png
+    - lib/Screens/assets/loginright.png
     - lib/Screens/assets/dentalcares.JSON
 
   # An image asset can refer to one or more resolution-specific "variants", see

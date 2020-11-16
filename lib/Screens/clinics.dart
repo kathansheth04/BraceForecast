@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:defhacks/Screens/login.dart';
+import 'package:defhacks/Screens/upload.dart';
+import 'package:defhacks/Screens/yesBraces.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:defhacks/Screens/clinics.dart';
@@ -91,7 +93,7 @@ class _MyHomePageState extends State<clinics> {
       } else {
         _selectedIndex = 1;
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => Clinics()));
+            context, MaterialPageRoute(builder: (context) => yesBracesScreen()));
       }
     });
   }
