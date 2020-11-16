@@ -42,7 +42,7 @@ class Body extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(30.0))),
                   label: Text('Register',
                       style: TextStyle(color: Colors.black, fontSize: 17)),
-                  icon: Icon(Icons.move_to_inbox, color: Colors.black),
+                  icon: Icon(Icons.person_add, color: Colors.black),
                   padding: const EdgeInsets.all(13.0),
                   splashColor: Colors.lightBlue[200],
                   color: Colors.lightBlue[100]),

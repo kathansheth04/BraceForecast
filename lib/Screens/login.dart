@@ -1,5 +1,6 @@
 import 'package:defhacks/Screens/dashboard.dart';
 import 'package:defhacks/Screens/register.dart';
+import 'package:defhacks/Screens/upload.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -65,7 +66,7 @@ class LoginScreen extends State<login> {
 
     print("Signed in user");
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        context, MaterialPageRoute(builder: (context) => uploadScreen()));
     return user;
   }
 
@@ -84,7 +85,7 @@ class LoginScreen extends State<login> {
         (await _auth.signInWithCredential(credential)).user;
     print("signed in ");
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        context, MaterialPageRoute(builder: (context) => uploadScreen()));
     return user;
   }
 

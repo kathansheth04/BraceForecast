@@ -57,6 +57,7 @@ flutter:
   assets:
     - lib/Screens/assets/logo.gif
     - lib/Screens/assets/smallLogo.gif
+    - lib/Screens/assets/smallLogo2.gif
     - lib/Screens/assets/main_top.png
     - lib/Screens/assets/main_bottom.png
     - lib/Screens/assets/main_topright.png

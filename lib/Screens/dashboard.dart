@@ -94,7 +94,9 @@ class _MyHomePageState extends State<MyHomePage> {
       backgroundColor: Colors.black,
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.apps), title: Text('Main')),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.apps),
+            title: Text('Main')),
           BottomNavigationBarItem(
             icon: Icon(Icons.table_chart),
             title: Text('Chart'),

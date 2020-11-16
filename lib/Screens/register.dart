@@ -77,45 +77,47 @@ class RegisterScreen extends State<register> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Positioned(
-            top: 10,
             left: -10,
             child: Image.asset("lib/Screens/assets/smallLogo.gif",
-                width: size.width * 1),
+                width: size.width * 0.5),
           ),
-            new Container(
-              padding: EdgeInsets.fromLTRB(10, 5, 10, 10),
-              width: 150.0,
-              child: TextFormField(
-                controller: _emailController,
-                decoration: new InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(width: 1, color: Colors.blue),
-                  ),
-                  border: const OutlineInputBorder(
-                    borderSide:
-                        const BorderSide(color: Colors.blue, width: 2.0),
-                  ),
-                  hintText: 'Enter your email ID',
-                  prefixIcon: Icon(Icons.email),
-                  labelText: 'Email',
-                  contentPadding:
-                      new EdgeInsets.fromLTRB(20.0, -50.0, 20.0, 10.0),
-                ),
-                validator: (input) =>
-                    input.isEmpty ? 'You must enter an email' : null,
-              ),
-            ),
             new Container(
                 padding: EdgeInsets.all(10.0),
                 child: TextFormField(
                   decoration: new InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          BorderSide(width: 1, color: Colors.deepOrange),
+                          BorderSide(width: 1, color: Colors.lightBlue),
                     ),
                     border: const OutlineInputBorder(
                       borderSide:
-                          const BorderSide(color: Colors.orange, width: 2.0),
+                          const BorderSide(color: Colors.lightBlue, width: 2.0),
+                    ),
+                    hintText: 'Enter your email ID',
+                    prefixIcon: Icon(Icons.person),
+                    labelText: 'Email',
+                    contentPadding: new EdgeInsets.fromLTRB(
+                      20.0,
+                      10.0,
+                      20.0,
+                      10.0,
+                    ),
+                  ),
+                validator: (input) =>
+                    input.isEmpty ? 'You must enter an email ID' : null,
+              ),
+        ),
+            new Container(
+                padding: EdgeInsets.all(10.0),
+                child: TextFormField(
+                  decoration: new InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                          BorderSide(width: 1, color: Colors.lightBlue),
+                    ),
+                    border: const OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.lightBlue, width: 2.0),
                     ),
                     hintText: 'Enter your password here',
                     prefixIcon: Icon(Icons.lock),
@@ -139,11 +141,11 @@ class RegisterScreen extends State<register> {
                   decoration: new InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          BorderSide(width: 1, color: Colors.deepOrange),
+                          BorderSide(width: 1, color: Colors.lightBlue),
                     ),
                     border: const OutlineInputBorder(
                       borderSide:
-                          const BorderSide(color: Colors.orange, width: 2.0),
+                          const BorderSide(color: Colors.lightBlue, width: 2.0),
                     ),
                     hintText: 'Confirm password here',
                     prefixIcon: Icon(Icons.vpn_key),
@@ -167,11 +169,11 @@ class RegisterScreen extends State<register> {
                   decoration: new InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderSide:
-                          BorderSide(width: 1, color: Colors.deepOrange),
+                          BorderSide(width: 1, color: Colors.lightBlue),
                     ),
                     border: const OutlineInputBorder(
                       borderSide:
-                          const BorderSide(color: Colors.orange, width: 2.0),
+                          const BorderSide(color: Colors.lightBlue, width: 2.0),
                     ),
                     hintText: 'Address',
                     prefixIcon: Icon(Icons.home),
