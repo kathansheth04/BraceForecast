@@ -7,11 +7,11 @@ There are hundreds of thousands of patients misdiagnosed for needing braces by c
 
 ## Tools and Frameworks used
 
-* (Flutter with dart)[https://flutter.dev/]
-* (Figma to sketch the UI)[https://www.figma.com]
-* (Firebase Auth and Database)[https://firebase.google.com/]
-* (Flask)[https://flask.palletsprojects.com/en/1.1.x/]
-* (Tensorflow and Keras)[https://www.tensorflow.org/]
+* [Flutter with dart](https://flutter.dev/)
+* [Figma to sketch the UI](https://www.figma.com)
+* [Firebase Auth and Database](https://firebase.google.com/)
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [Tensorflow and Keras](https://www.tensorflow.org/)
 
 
 ## Highlights and Features
@@ -27,7 +27,7 @@ There are hundreds of thousands of patients misdiagnosed for needing braces by c
 
 ## Contributors
 
-* (Kathan Sheth)[https://github.com/kathansheth04]
-* (Samarth Shah)[https://github.com/Samarth314]
-* (Sashv Dave)[https://github.com/SashvDave]
-* (Ved Joshi)[https://github.com/Ved-Joshi]
+* [Kathan Sheth](https://github.com/kathansheth04)
+* [Samarth Shah](https://github.com/Samarth314)
+* [Sashv Dave](https://github.com/SashvDave)
+* [Ved Joshi](https://github.com/Ved-Joshi)
