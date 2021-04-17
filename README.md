@@ -25,13 +25,9 @@ There are hundreds of thousands of patients misdiagnosed for needing braces by c
 * Easily accessible to be redirected to google maps or telephone app within app.
 * Tips to maintain Oral Hygiene 
 
-## Link to Video
-
-https://www.youtube.com/watch?time_continue=103&v=5LiK_92LOxc&feature=emb_title
-
 ## Contributors
 
-* Samarth Shah (samarthandroid145@gmail.com)
-* Kathan Sheth (sheth.kathan04@gmail.com)
-* Sashv Dave (davesashv@gmail.com)
-* Ved Joshi (behumble1907@gmail.com)
+* (Kathan Sheth)[https://github.com/kathansheth04]
+* (Samarth Shah)[https://github.com/Samarth314]
+* (Sashv Dave)[https://github.com/SashvDave]
+* (Ved Joshi)[https://github.com/Ved-Joshi]
